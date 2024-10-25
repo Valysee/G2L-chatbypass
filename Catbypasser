@@ -1,0 +1,2888 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua", true))()
+
+
+local TCS = game:GetService("TextChatService")
+local CoreGui = game:GetService("CoreGui")
+local RStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer.PlayerGui
+local isLegacy = TCS.ChatVersion == Enum.ChatVersion.LegacyChatService
+local ChatBar = CoreGui:FindFirstChild("TextBoxContainer", true) or PlayerGui:FindFirstChild("Chat"):FindFirstChild("ChatBar", true)
+ChatBar = ChatBar:FindFirstChild("TextBox") or ChatBar
+
+local Chat = function(Message)
+	if isLegacy then
+		local ChatRemote = RStorage:FindFirstChild("SayMessageRequest", true)
+		ChatRemote:FireServer(Message, "All")
+	else
+		local Channel = TCS.TextChannels.RBXGeneral
+		Channel:SendAsync(Message)
+	end
+end
+
+
+wait(0.01)
+Chat("cï¿´ï¿´aï¿´ï¿´ï¿´tï¿´ï¿´ï¿´bï¿´ï¿´yï¿´pï¿´asï¿´sï¿´eï¿´r|Lï¿´ï¿´oï¿´ï¿´aded!")
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "KircleBypsser",
+    SubTitle = "by Sysgeta and jay",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Darker",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+
+
+
+      local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "info" }),
+}
+
+Window:SelectTab(1)
+
+Tabs.Main:AddParagraph({
+    Title = "Creators",
+    Content = "Jay and Sysgeta"
+})
+     
+Tabs.Main:AddParagraph({
+    Title = "Tip",
+    Content = "Dont spam so it wont tag"
+})
+
+Tabs.Main:AddButton({
+   Title = "Auto bypasser",
+   Description = "Executes the auto bypasser",
+   Callback = function()
+      local function sendChat(msg)
+         local Players = game:GetService("Players")
+         local LocalPlayer = Players.LocalPlayer
+         local TextChatService = game:GetService("TextChatService")
+         local ReplicatedStorage = game:GetService("ReplicatedStorage")
+         local chat = TextChatService.ChatInputBarConfiguration.TargetTextChannel
+     
+         local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
+         local tagged = filteredMessage ~= msg
+     
+         if tagged then
+             game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Tag Detected!", Text = "Message got tagged!"})
+         else
+             if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
+                 ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(msg, "All")
+             else
+                 chat:SendAsync(msg)
+             end
+         end
+     end
+     
+     -- Send a message as soon as the script is executed
+     sendChat("lol")
+     
+     
+     -- GUI Creation
+     local G2L = {}
+     G2L["1"] = Instance.new("ScreenGui", game:GetService("CoreGui"))
+     G2L["2"] = Instance.new("Frame", G2L["1"])
+     G2L["2"].BorderSizePixel = 0
+     G2L["2"].BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+     G2L["2"].Size = UDim2.new(0, 460, 0, 280)
+     G2L["2"].Position = UDim2.new(0.5, -150, 0.5, -50)
+     G2L["2"].BorderColor3 = Color3.fromRGB(1, 1, 1)
+     G2L["3"] = Instance.new("LocalScript", G2L["2"])
+     G2L["3"].Name = "Drag"
+     G2L["4"] = Instance.new("UICorner", G2L["2"])
+     G2L["4"].CornerRadius = UDim.new(5, 4)
+     G2L["5"] = Instance.new("ImageLabel", G2L["2"])
+     G2L["5"].BorderSizePixel = 0
+     G2L["5"].BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+     G2L["5"].Image = "rbxassetid://112546652009650"
+     G2L["5"].Size = UDim2.new(0, 460, 0, 280)
+     G2L["5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+     G2L["5"].LayoutOrder = -6
+     G2L["6"] = Instance.new("UICorner", G2L["5"])
+     G2L["6"].CornerRadius = UDim.new(0, 4)
+     G2L["7"] = Instance.new("TextBox", G2L["5"])
+     G2L["7"].PlaceholderColor3 = Color3.fromRGB(1, 1, 1)
+     G2L["7"].BorderSizePixel = 0
+     G2L["7"].TextWrapped = true
+     G2L["7"].TextTransparency = 0.41
+     G2L["7"].TextScaled = false
+     G2L["7"].TextSize = 31
+     G2L["7"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+     G2L["7"].FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+     G2L["7"].PlaceholderText = "Message here!"
+     G2L["7"].Size = UDim2.new(0.905, -20, 0.33938, -10)
+     G2L["7"].Position = UDim2.new(0, 34, 0, 60)
+     G2L["7"].Text = ""
+     G2L["7"].LayoutOrder = 8
+     G2L["7"].BackgroundTransparency = 0.6
+     G2L["8"] = Instance.new("UICorner", G2L["7"])
+     G2L["8"].CornerRadius = UDim.new(5, 4)
+     G2L["9"] = Instance.new("TextButton", G2L["5"])
+     G2L["9"].TextWrapped = true
+     G2L["9"].BorderSizePixel = 0
+     G2L["9"].TextSize = 30
+     G2L["9"].BackgroundColor3 = Color3.fromRGB(240,128,128)
+     G2L["9"].FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+     G2L["9"].Size = UDim2.new(0.5, -17, 0.2, -10)
+     G2L["9"].BackgroundTransparency = 0.5
+     G2L["9"].LayoutOrder = 5
+     G2L["9"].Text = "Send!"
+     G2L["9"].Position = UDim2.new(0.24, 10, 0.71938, 0)
+     G2L["a"] = Instance.new("LocalScript", G2L["9"])
+     G2L["b"] = Instance.new("UICorner", G2L["9"])
+     G2L["b"].CornerRadius = UDim.new(5, 6)
+     G2L["c"] = Instance.new("LocalScript", G2L["9"])
+     G2L["c"].Enabled = false
+     G2L["c"].Disabled = true
+     G2L["d"] = Instance.new("TextLabel", G2L["5"])
+     G2L["d"].TextWrapped = true
+     G2L["d"].TextStrokeTransparency = 0.83
+     G2L["d"].BorderSizePixel = 0
+     G2L["d"].TextScaled = true
+     G2L["d"].BackgroundColor3 = Color3.fromRGB(128,0,0)
+     G2L["d"].TextSize = 19
+     G2L["d"].FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json")
+     G2L["d"].TextColor3 = Color3.fromRGB(1,1,1)
+     G2L["d"].BackgroundTransparency = 1
+     G2L["d"].Size = UDim2.new(0, 460, 0, 34)
+     G2L["d"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+     G2L["d"].Text = "Catbypasser Auto"
+     G2L["e"] = Instance.new("UICorner", G2L["d"])
+     G2L["e"].CornerRadius = UDim.new(0, 4)
+     
+     -- Close Button Creation
+     G2L["f"] = Instance.new("TextButton", G2L["5"])
+     G2L["f"].TextWrapped = true
+     G2L["f"].BorderSizePixel = 0
+     G2L["f"].TextSize = 30
+     G2L["f"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+     G2L["f"].FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+     G2L["f"].Size = UDim2.new(0.1, -10, 0.1, -10)
+     G2L["f"].BackgroundTransparency = 1
+     G2L["f"].LayoutOrder = 6
+     G2L["f"].Text = "X"
+     G2L["f"].Position = UDim2.new(1, 0, 0.03, 0)
+     G2L["f"].AnchorPoint = Vector2.new(1, 0)
+     G2L["f"].TextColor3 = Color3.fromRGB(255, 0, 0)
+     G2L["f"].ZIndex = 10
+     G2L["g"] = Instance.new("UICorner", G2L["f"])
+     G2L["g"].CornerRadius = UDim.new(0, 3)
+     
+     
+     -- Dragging functionality
+     local function C_3()
+         local script = G2L["3"]
+         local UserInputService = game:GetService("UserInputService")
+         local gui = script.Parent
+         local dragging
+         local dragInput
+         local dragStart
+         local startPos
+         local function update(input)
+             local delta = input.Position - dragStart
+             gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+         end
+         gui.InputBegan:Connect(function(input)
+             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                 dragging = true
+                 dragStart = input.Position
+                 startPos = gui.Position
+                 input.Changed:Connect(function()
+                     if input.UserInputState == Enum.UserInputState.End then
+                         dragging = false
+                     end
+                 end)
+             end
+         end)
+         gui.InputChanged:Connect(function(input)
+             if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                 dragInput = input
+             end
+         end)
+         UserInputService.InputChanged:Connect(function(input)
+             if input == dragInput and dragging then
+                 update(input)
+             end
+         end)
+     end
+     task.spawn(C_3)
+     
+     -- Chat functionality
+     local function C_a()
+         local script = G2L["a"]
+         local Players = game:GetService("Players")
+         local LocalPlayer = Players.LocalPlayer
+         local TextChatService = game:GetService("TextChatService")
+         local ReplicatedStorage = game:GetService("ReplicatedStorage")
+         local StarterGui = game:GetService("StarterGui")
+         local textButton = script.Parent
+         local textBox = script.Parent.Parent.TextBox
+         local chat = TextChatService.ChatInputBarConfiguration.TargetTextChannel
+         local function replace(str, find_str, replace_str)
+             local escaped_find_str = find_str:gsub("[%-%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%0")
+             return str:gsub(escaped_find_str, replace_str)
+         end
+         task.spawn(C_3)
+         local letters = {
+           ["A"] = "ï¿´Î‘ï¿´ï¿´",
+           ["a"] = "ï¿´Ð°ï¿´ï¿´",
+           ["B"] = "ï¿´Bï¿´ï¿´",
+           ["b"] = "ï¿´bï¿´ï¿´",
+           ["C"] = "ï¿´Ï²ï¿´ï¿´",
+           ["c"] = "ï¿´cï¿´ï¿´",
+           ["D"] = "ï¿´Dï¿´ï¿´",
+           ["d"] = "ï¿´dï¿´ï¿´",
+           ["E"] = "ï¿´Eï¿´ï¿´",
+           ["e"] = "ï¿´Ðµï¿´ï¿´",
+           ["F"] = "ï¿´Fï¿´ï¿´",
+           ["f"] = "ï¿´fï¿´ï¿´",
+           ["G"] = "ï¿´Gï¿´ï¿´",
+           ["g"] = "ï¿´É¡ï¿´ï¿´",
+           ["H"] = "ï¿´Hï¿´ï¿´",
+           ["h"] = "ï¿´Ò»ï¿´ï¿´",
+           ["I"] = "ï¿´Iï¿´ï¿´",
+           ["i"] = "ï¿´iï¿´ï¿´",
+           ["J"] = "ï¿´Ðˆï¿´ï¿´",
+           ["j"] = "ï¿´jï¿´ï¿´",
+           ["K"] = "ï¿´Kï¿´ï¿´",
+           ["k"] = "ï¿´kï¿´ï¿´",
+           ["L"] = "ï¿´Lï¿´ï¿´",
+           ["l"] = "ï¿´lï¿´ï¿´",
+           ["M"] = "ï¿´Mï¿´ï¿´",
+           ["m"] = "ï¿´mï¿´ï¿´",
+           ["N"] = "ï¿´Nï¿´ï¿´",
+           ["n"] = "ï¿´nï¿´ï¿´",
+           ["O"] = "ï¿´Oï¿´ï¿´",
+           ["o"] = "ï¿´oï¿´ï¿´",
+           ["P"] = "ï¿´Pï¿´ï¿´",
+           ["p"] = "ï¿´pï¿´ï¿´",
+           ["Q"] = "ï¿´Qï¿´ï¿´",
+           ["q"] = "ï¿´qï¿´ï¿´",
+           ["R"] = "ï¿´Rï¿´ï¿´",
+           ["r"] = "ï¿´rï¿´ï¿´",
+           ["S"] = "ï¿´Sï¿´ï¿´",
+           ["s"] = "ï¿´sï¿´ï¿´",
+           ["t"] = "ï¿´tï¿´ï¿´",
+           ["T"] = "ï¿´Tï¿´ï¿´",
+           ["U"] = "ï¿´Uï¿´ï¿´",
+           ["u"] = "ï¿´uï¿´ï¿´",
+           ["V"] = "ï¿´Vï¿´ï¿´",
+           ["v"] = "ï¿´vï¿´ï¿´",
+           ["W"] = "ï¿´Wï¿´ï¿´",
+           ["w"] = "ï¿´wï¿´ï¿´",
+           ["X"] = "ï¿´Î§ï¿´ï¿´",
+           ["x"] = "ï¿´xï¿´ï¿´",
+           ["Y"] = "ï¿´Ò®ï¿´ï¿´",
+           ["y"] = "ï¿´yï¿´ï¿´",
+           ["Z"] = "Î–ï¿´ï¿´",
+           ["z"] = "zï¿´ï¿´",
+           [" "] = ""
+         }
+         local function filter(message)
+             for search, replacement in pairs(letters) do
+                 message = replace(message, search, replacement)
+             end
+             return message
+         end
+         local function showNotification(title, text)
+             StarterGui:SetCore("SendNotification", {Title = title, Text = text, Duration = 5})
+         end
+         local function sendChat(msg)
+             local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
+             local tagged = filteredMessage ~= msg
+             if tagged then
+                 showNotification("Tag Detected!", "Message got tagged!")
+                 textBox.Text = ""
+             else
+                 if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
+                     ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(msg, "All")
+                 else
+                     chat:SendAsync(msg)
+                 end
+                 textBox.Text = ""
+             end
+         end
+         local function processText()
+             local inputText = textBox.Text
+             local convertedText = filter(inputText)
+             sendChat(convertedText)
+         end
+         textButton.MouseButton1Click:Connect(processText)
+         textBox.FocusLost:Connect(function(enterPressed)
+             if enterPressed then
+                 processText()
+             end
+         end)
+     end
+     task.spawn(C_a)
+     
+     -- Toggle GUI visibility
+     local function C_11()
+         local script = G2L["11"]
+         local main = script.Parent.Parent.ImageLabel
+         local button = script.Parent
+         local function toggleVisibility()
+             for _, child in ipairs(main:GetChildren()) do
+                 if child:IsA("TextBox") or child:IsA("TextButton") or child:IsA("TextLabel") then
+                     child.Visible = not child.Visible
+                 end
+             end
+         end
+         button.MouseButton1Click:Connect(toggleVisibility)
+     end
+     task.spawn(C_11)
+     
+     -- Close Button Functionality
+     local function closeGUI()
+         G2L["1"].Enabled = false
+     end
+     
+     G2L["f"].MouseButton1Click:Connect(closeGUI)
+     
+     return G2L["1"], require
+     
+   end,
+})
+
+      
+
+Tabs.Main:AddButton({
+    Title = "Fix tagging",
+   Description = "Very important button",
+   Callback = function()
+      Chat("abcdefghâ¸Â¡Â¿}Â¥=â‚¬=â‚¬Ã—|")
+
+   end,
+ })
+
+
+
+      Tabs.Main:AddButton({
+        Title = "shadow62 is a fucking LEGEND!",
+        Description = "Very important button",
+        Callback = function()
+           Chat("shadow62isafï¿´ï¿´ï¿´uÑï¿´ï¿´ï¿´kÑ–ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´gLEGEND!")
+
+        end,
+        })
+
+        Tabs.Main:AddButton({
+         Title = "onlyfans.com/shhdw",
+         Description = "onlyfans",
+         Callback = function()
+            Chat("oï¿´ï¿´nï¿´ï¿´lï¿´ï¿´yï¿´ï¿´fï¿´ï¿´aï¿´ï¿´nï¿´ï¿´ï¿´sï¿´ï¿´.ï¿´ï¿´cï¿´ï¿´oï¿´ï¿´mï¿´ï¿´/ï¿´ï¿´sï¿´ï¿´hï¿´ï¿´hï¿´ï¿´dï¿´ï¿´wï¿´ï¿´")
+ 
+         end,
+         })
+
+Tabs.Main:AddButton({
+        Title = "catbypasser is so fucking fire",
+        Description = "Very important button",
+        Callback = function()
+           Chat("caï¿´ï¿´ï¿´ï¿´tbï¿´ï¿´ï¿´ï¿´ypï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ssï¿´ï¿´ï¿´ï¿´er iï¿´ï¿´ï¿´ï¿´s sï¿´ï¿´ï¿´o fï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´gfiï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´e")
+
+        end,
+        })
+
+Tabs.Main:AddButton({
+        Title = "join catbypasser if u wanna talk shit to fags!",
+        Description = "Very important button",
+        Callback = function()
+           Chat("joï¿´ï¿´ï¿´incaï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ypï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ssï¿´ï¿´ï¿´ï¿´eriï¿´ï¿´ï¿´ï¿´fuwaï¿´ï¿´ï¿´ï¿´nnatalksï¿´ï¿´ï¿´ï¿´ï¿´hiï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´tofï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´!")
+
+        end,
+        })
+
+           Tabs.Main:AddButton({
+            Title = "join .gg/catbypasser for pussy!",
+            Description = "Very important button",
+            Callback = function()
+               Chat("jï¿´ï¿´ï¿´oï¿´ï¿´ï¿´iï¿´ï¿´ï¿´n.ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´gï¿´/ï¿´cï¿´aï¿´tï¿´bï¿´yï¿´pï¿´aï¿´sï¿´sï¿´eï¿´rfï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rpï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´sï¿´ï¿´ï¿´sï¿´ï¿´ï¿´yï¿´ï¿´ï¿´!")
+
+            end,
+        })
+
+Tabs.Main:AddButton({
+            Title = "catbypasser gives u nigger slaves for 0$ dollars!",
+            Description = "Very important button",
+            Callback = function()
+               Chat("caï¿´ï¿´tbï¿´ï¿´ypï¿´ï¿´aï¿´sï¿´ï¿´seï¿´ï¿´ï¿´rï¿´ï¿´giï¿´ï¿´ï¿´ï¿´vï¿´ï¿´eï¿´ï¿´sunï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rsï¿´ï¿´ï¿´lï¿´ï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´eï¿´ï¿´sfï¿´ï¿´ï¿´oï¿´ï¿´ï¿´r0ï¿´ï¿´$dï¿´ï¿´oï¿´ï¿´lï¿´ï¿´ï¿´lï¿´ï¿´aï¿´ï¿´rï¿´ï¿´s!")
+
+            end,
+        })
+
+               Tabs.Main:AddButton({
+                Title = "your bypasser is terrible holy fuck",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("yourbypasseristÐµrï¿´ï¿´ï¿´rÑ–bï¿´ï¿´ï¿´ÓÐµÒ»Ð¾ï¿´ï¿´ï¿´ÓÑƒfï¿´ï¿´ï¿´uÑï¿´ï¿´ï¿´k")       
+                   
+                end,
+            })
+
+
+
+               Tabs.Main:AddButton({
+                Title = "join catbypasser or be a fag, pick one!",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("joï¿´ï¿´ï¿´ï¿´ï¿´incï¿´ï¿´ï¿´ï¿´ï¿´atbypï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´ï¿´seroï¿´ï¿´ï¿´ï¿´ï¿´rbï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eafï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´g,pï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ickonï¿´ï¿´ï¿´ï¿´ï¿´e!")       
+                   
+                end,
+            })
+
+               Tabs.Main:AddButton({
+                Title = "nï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´e cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´opï¿´ï¿´ï¿´ï¿´ï¿´pa sï¿´ï¿´ï¿´ï¿´aiï¿´ï¿´ï¿´ï¿´ï¿´d ''i ï¿´fï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´g hï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´e kirclebypasser!''",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("nï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´ecï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´opï¿´ï¿´ï¿´ï¿´ï¿´pasï¿´ï¿´ï¿´ï¿´aiï¿´ï¿´ï¿´ï¿´ï¿´d'iï¿´fï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´ghï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ekirclebypasser!'")       
+                   
+                end,
+            })
+
+               Tabs.Main:AddButton({
+                Title = "playboi carti said ''fuck skids like sysgeta!''",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("pï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´yï¿´ï¿´ï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ï¿´ï¿´oicï¿´ï¿´ï¿´ï¿´ï¿´ï¿´arï¿´ï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´isaï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´id''fï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´ksï¿´ï¿´ï¿´kï¿´idï¿´ï¿´ï¿´ï¿´slï¿´ï¿´ï¿´ikï¿´ï¿´ï¿´esysgeta!''")       
+                   
+                end,
+            })
+
+            Tabs.Main:AddButton({
+                Title = "use catbypasser or get raped by drake!",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("usecatbypasserorgetrÐ°Ñ€ï¿´ï¿´ï¿´ÐµdbÑƒdrÐ°ï¿´ï¿´ï¿´ke!")       
+                   
+                end,
+            })
+
+
+                   Tabs.Main:AddButton({
+                    Title = "use catbypasser for free anal sex",
+                    Description = "Very important button",
+                    Callback = function()
+                       Chat("usecatbypasserforï¿´ï¿´freeÐ°nÐ°ÓÑ•ï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñ…") 
+                    	
+                    end,
+                   })                   	
+                    	
+                    	Tabs.Main:AddButton({
+                    Title = "c2vp is the fucking goat!",
+                    Description = "Very important button",
+                    Callback = function()
+                    	Chat("cï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´2pisthefï¿´ï¿´ï¿´uÑï¿´ï¿´ï¿´kÑ–ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ggoat!")
+
+   end,
+})
+
+Tabs.Main:AddButton({
+                    
+                    Title = ".ï¿´gï¿´gï¿´/ï¿´cï¿´aï¿´tï¿´bï¿´yï¿´pï¿´aï¿´sï¿´sï¿´eï¿´r join now bitch!",
+                    Description = "Very important button",
+                    Callback = function()
+                    	Chat(".ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´gï¿´/ï¿´cï¿´aï¿´tï¿´bï¿´yï¿´pï¿´aï¿´sï¿´sï¿´eï¿´rrjï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´nnï¿´ï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´wbï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´h!") 
+
+   end,
+})
+
+Tabs.Main:AddButton({
+                    
+                    Title = "don't be a faï¿´ï¿´ï¿´ï¿´ï¿´ï¿´g and join catbypasser!",
+                    Description = "Very important button",
+                    Callback = function()
+                    	Chat("don'tbeafï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gandjoincatbypasser!")
+
+   end,
+})
+
+Tabs.Main:AddButton({
+                    Title = "_9xr is the fucking goat!",
+                    Description = "Very important button",
+                    Callback = function()
+                    	Chat("_9xristhefï¿´ï¿´ï¿´uÑï¿´ï¿´ï¿´kÑ–ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ggoat!")
+
+   end,
+})
+
+
+
+Tabs.Main:AddButton({
+   Title = "use catbypasser if youre not a slave monkey!",
+   Description = "Very important button",
+   Callback = function()
+      Chat("usecatbypasserifyou'renotaÑ•ï¿´Óï¿´Ð°ï¿´vï¿´ÐµmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ!") 
+
+
+   end,
+})
+
+       local Tabs = {
+    Sentences = Window:AddTab({ Title = "Sentences", Icon = "book" })
+                            }
+
+            Tabs.Sentences:AddButton({
+   Title = "that's fucking insane lol",
+   Description = "Very important button",
+   Callback = function()
+      Chat("tÒ»ï¿´ï¿´ï¿´Ð°t'Ñ•fï¿´ï¿´ï¿´uÑï¿´ï¿´ï¿´kÑ–ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ginsanelol")
+       
+       end,
+       })
+       
+       Tabs.Sentences:AddButton({
+        Title = "oh yeah... take that cock!",
+        Description = "Very important button",
+        Callback = function()
+           Chat("oÒ»ï¿´ï¿´yeaÒ»ï¿´...taketÒ»ï¿´ï¿´ï¿´atÑï¿´ï¿´ï¿´Ð¾Ñï¿´ï¿´ï¿´k!")
+            
+            end,
+            })
+            
+            Tabs.Sentences:AddButton({
+                Title = "wow! that cock riding never stops!",
+                Description = "Very important button",
+                Callback = function()
+                   Chat("wow!thatÑï¿´ï¿´ï¿´Ð¾Ñï¿´ï¿´ï¿´kridingneverstops!")
+                    
+                    end,
+                    })
+
+                    Tabs.Sentences:AddButton({
+                        Title = "keep riding that dï¿´ï¿´ï¿´Ñ–Ñï¿´ï¿´ï¿´k baby!",
+                        Description = "Very important button",
+                        Callback = function()
+                           Chat("keepridingtÒ»ï¿´ï¿´ï¿´atdï¿´ï¿´ï¿´Ñ–Ñï¿´ï¿´ï¿´kbbg!")
+                            
+                            end,
+                            })
+
+                            Tabs.Sentences:AddButton({
+                                Title = "go commit suicide",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("gï¿´Ð¾Ñï¿´Ð¾ï¿´mï¿´mï¿´Ñ–ï¿´tÑ•ï¿´uï¿´Ñ–ï¿´Ñï¿´Ñ–ï¿´dï¿´Ðµ")
+                                    
+                                    end,
+                                    })
+
+                                    Tabs.Sentences:AddButton({
+                                       Title = "this nigga built like a whale",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´ï¿´ï¿´Ò»Ñ–ï¿´ï¿´ï¿´Ñ•nÑ–gï¿´ï¿´ï¿´gÐ°bï¿´ï¿´ï¿´uÑ–ï¿´ï¿´ï¿´ÓtÓÑ–ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ÐµÐ°whale")
+                                           
+                                           end,
+                                           })              
+
+Tabs.Sentences:AddButton({
+                                       Title = "i hope you die lol",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("iÒ»opeyoudï¿´Ñ–ï¿´Ðµï¿´ï¿´lol")
+                                           
+                                           end,
+                                           })       
+
+Tabs.Sentences:AddButton({
+                                       Title = "hang yourself fucktard",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Ò»ï¿´Ð°ï¿´nï¿´gÑƒï¿´Ð¾ï¿´uï¿´rï¿´Ñ•ï¿´Ðµï¿´Óï¿´ffï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´Ñï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´d")
+                                           
+                                           end,
+                                           })  
+
+Tabs.Sentences:AddButton({
+                                       Title = "hop off my dick ape!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Ò»ï¿´Ð¾ï¿´Ñ€Ð¾ï¿´fï¿´fmï¿´Ñƒdï¿´Ñ–ï¿´ï¿´Ñï¿´kape!")
+                                           
+                                           end,
+                                           }) 
+
+                                           Tabs.Sentences:AddButton({
+                                             Title = "this ugly ass nigga bro",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("thisuï¿´ï¿´ï¿´gÓï¿´ï¿´ï¿´ÑƒÐ°ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´Ñ•nï¿´ï¿´ï¿´Ñ–ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gabro")
+                                                 
+                                                 end,
+                    
+                                                 }) 
+
+                                                 Tabs.Sentences:AddButton({
+                                                   Title = "no shit monkey",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("nï¿´ï¿´ï¿´Ð¾Ñ•ï¿´ï¿´ï¿´Ò»Ñ–ï¿´ï¿´ï¿´tmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ")
+                                                       
+                                                       end,
+                          
+                                                       }) 
+
+Tabs.Sentences:AddButton({
+                                       Title = "have you ever felt pussy in your life?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Ò»ï¿´Ð°ï¿´vï¿´ÐµÑƒï¿´Ð¾ï¿´ueverfeltÑ€ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´Ñƒinyourlife?")
+                                           
+                                           end,
+                                           }) 
+
+                                           Tabs.Sentences:AddButton({
+                                             Title = "swallow my dick monkey!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("Ñ•wï¿´ï¿´ï¿´Ð°ÓÓï¿´ï¿´ï¿´Ð¾wmydï¿´ï¿´ï¿´Ñ–Ñï¿´ï¿´ï¿´kmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ!")
+                                                 
+                                                 end,
+                                                 }) 
+
+                                                 
+
+
+                                                       Tabs.Sentences:AddButton({
+                                                         Title = "heh... raping session tonight, same time bbg",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("Ò»eÒ»...rï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´Ñ€Ñ–nï¿´ï¿´ï¿´gsessiontonight,sametimebbg")
+                                                         end,
+                                                      })
+
+                                                      Tabs.Sentences:AddButton({
+                                                         Title = "this nigga def jerks off to skibidi toilet porn",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("tÒ»ï¿´ï¿´ï¿´Ñ–Ñ•nÑ–gï¿´ï¿´ï¿´gÐ°dï¿´ï¿´ï¿´Ðµfjï¿´Ðµï¿´rï¿´ksÐ¾ï¿´fï¿´ftoskibiditoiletï¿´ï¿´Ñ€ï¿´Ð¾rï¿´ï¿´ï¿´ï¿´ï¿´n")
+                                                         end,
+                                                      })        
+                                                      
+                                                      Tabs.Sentences:AddButton({
+                                                         Title = "Sorry, i don't talk to fÐ°Ñ–ÓÐµdÐ°ï¿´bï¿´Ð¾ï¿´rï¿´tï¿´Ñ–ï¿´Ð¾ï¿´nï¿´Ñ•",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("Sorry,idon'ttalktofÐ°Ñ–ÓÐµdÐ°ï¿´bï¿´Ð¾ï¿´rï¿´tï¿´Ñ–ï¿´Ð¾ï¿´nï¿´Ñ•")
+                                                         end,
+                                                      })          
+
+                                                      Tabs.Sentences:AddButton({
+                                                         Title = "oh nooo nigga! i dont speak in tags!",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("oï¿´ï¿´ï¿´hnï¿´ï¿´ï¿´ooï¿´ï¿´ï¿´ï¿´ï¿´oonï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´aï¿´!idoï¿´ï¿´ï¿´ï¿´ntsï¿´ï¿´ï¿´peï¿´ï¿´ï¿´ï¿´akiï¿´ï¿´ï¿´ï¿´ntaï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´sï¿´!")
+                                                         end,
+                                                      })
+
+
+                                                      
+                                                      
+                Tabs.Sentences:AddButton({
+                                             Title = "cry about it fatass",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("cryaboutitfï¿´Ð°ï¿´tï¿´Ð°ï¿´Ñ•ï¿´Ñ•")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "idc go fuck yourself",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("idcgï¿´ï¿´ï¿´ï¿´ofï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kyï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´f")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "shut up fatass monkey!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´tuï¿´ï¿´ï¿´ï¿´pfï¿´Ð°ï¿´tï¿´Ð°ï¿´Ñ•ï¿´Ñ•mï¿´ï¿´ï¿´ï¿´onkï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ey")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "just stop fucking talking!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("jï¿´ï¿´ï¿´usï¿´ï¿´ï¿´ï¿´tstï¿´ï¿´ï¿´oï¿´ï¿´ï¿´pfï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´iï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´gtaï¿´ï¿´ï¿´ï¿´lkiï¿´ï¿´ï¿´nï¿´g")
+                                                
+                                             end,
+                                          })
+
+
+Tabs.Sentences:AddButton({
+                                             Title = "lose weigh fatass",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("lï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "okay idc dumbass ape",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("okï¿´ï¿´ï¿´ï¿´ayidcï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´aï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "'boys go to jupiter to get more stupider' ass comeback",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("'boysgotojupitertogetmorestuï¿´ï¿´ï¿´piï¿´ï¿´ï¿´ï¿´der'aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´comeback")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "at least im not retarded lol",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("aï¿´ï¿´ï¿´ï¿´tï¿´lï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eaï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´tiï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´mnï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´otrï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´eï¿´ï¿´ï¿´dlol")
+                                                
+                                             end,
+                                          })
+
+ Tabs.Sentences:AddButton({
+                                             Title = "skibidi fanum tax my cock retard!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´kï¿´iï¿´bï¿´iï¿´dï¿´ifï¿´aï¿´nï¿´uï¿´mtï¿´ï¿´aï¿´ï¿´xmï¿´ycï¿´ï¿´ï¿´oï¿´ï¿´cï¿´ï¿´ï¿´krï¿´ï¿´eï¿´ï¿´ï¿´tï¿´ï¿´ï¿´aï¿´ï¿´ï¿´rï¿´ï¿´ï¿´d!")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Sentences:AddButton({
+                                             Title = "tï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´apï¿´rï¿´oï¿´bazï¿´oï¿´oï¿´pï¿´hï¿´iï¿´lï¿´e",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("tï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´apï¿´rï¿´oï¿´bazï¿´oï¿´oï¿´pï¿´hï¿´iï¿´lï¿´e")
+                                                
+                                             end,
+                                          })
+
+ Tabs.Sentences:AddButton({
+                                             Title = "this nigga talking in ''####''",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("tï¿´ï¿´hï¿´ï¿´ï¿´ï¿´isnï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´ataï¿´ï¿´ï¿´lkiï¿´ï¿´ngiï¿´ï¿´n''#ï¿´##ï¿´#''")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "THIS NIGGA IS GETTING POSSESSED LOL",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("Tï¿´ï¿´Hï¿´Iï¿´ï¿´SNï¿´ï¿´Iï¿´ï¿´Gï¿´ï¿´Gï¿´ï¿´Aï¿´ï¿´Iï¿´ï¿´SGï¿´ï¿´Eï¿´ï¿´Tï¿´Tï¿´ï¿´Iï¿´Nï¿´GPï¿´OSï¿´SEï¿´SSï¿´Eï¿´ï¿´DLOL")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "ngl bro that was lame as fuck",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("nï¿´oï¿´tgï¿´oï¿´nlï¿´iï¿´ebï¿´ï¿´rï¿´ï¿´otï¿´ï¿´hï¿´ï¿´aï¿´ï¿´twï¿´ï¿´aï¿´ï¿´slï¿´ï¿´aï¿´ï¿´mï¿´ï¿´eaï¿´sfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "gimme 20$ and ill suck that cock",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("gï¿´ï¿´iï¿´ï¿´mï¿´ï¿´mï¿´ï¿´e2ï¿´ï¿´0ï¿´ï¿´$aï¿´ï¿´nï¿´ï¿´ï¿´ï¿´dillsï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ktï¿´ï¿´hï¿´ï¿´aï¿´ï¿´tcï¿´ï¿´oï¿´ï¿´cï¿´ï¿´k")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "this nigga tweakin wtf lol",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("tï¿´ï¿´hisnï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´atï¿´ï¿´wï¿´ï¿´eï¿´ï¿´aï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nwï¿´ï¿´tï¿´ï¿´fï¿´ï¿´lol")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "get that dildo out of your ass!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("getï¿´tï¿´ï¿´hï¿´ï¿´aï¿´ï¿´tdï¿´ï¿´iï¿´ï¿´lï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ooutofyï¿´ï¿´oï¿´ï¿´ï¿´uï¿´ï¿´raï¿´ï¿´ï¿´sï¿´ï¿´sï¿´ï¿´ï¿´!")
+                                                
+                                             end,
+                                          })
+
+
+
+
+Tabs.Sentences:AddButton({
+                                             Title = "oh noo! this retard is crying",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ohnoo!thisrï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´diï¿´ï¿´ï¿´ï¿´ï¿´ï¿´scï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´yï¿´ï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ng!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "sucking cocks for some fentanyl!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´uï¿´ckï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gcï¿´ï¿´oï¿´ï¿´cï¿´ï¿´kï¿´ï¿´sforsomefï¿´ï¿´eï¿´ï¿´nï¿´ï¿´taï¿´ï¿´nï¿´ï¿´yï¿´ï¿´ï¿´l!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "yk what fuck this shit im out",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("yï¿´ï¿´kwï¿´ï¿´hï¿´ï¿´aï¿´ï¿´tfï¿´ï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ktï¿´ï¿´hï¿´iï¿´ssï¿´hï¿´iï¿´ï¿´tiï¿´ï¿´moï¿´ï¿´uï¿´ï¿´t")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "cry me a river fucktard!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("cï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ymï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eariverfï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´d!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "open wide for big dick daddy lil fucker!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("openwï¿´idï¿´efï¿´oï¿´rbï¿´iï¿´gdï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´daddylilï¿´fï¿´uï¿´cï¿´ï¿´kï¿´ï¿´eï¿´ï¿´rï¿´ï¿´!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "can you please just shut the fuck up?",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("canyoï¿´ï¿´ï¿´ï¿´ï¿´uplï¿´ï¿´ï¿´ï¿´eaï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´ejï¿´ï¿´ï¿´ï¿´usï¿´ï¿´ï¿´ï¿´ï¿´tsï¿´ï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´ï¿´efï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kuï¿´ï¿´ï¿´ï¿´p?")
+                                                
+                                             end,
+                                          })
+                                             
+
+Tabs.Sentences:AddButton({
+                                             Title = "thï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´abï¿´uï¿´iï¿´lï¿´tliï¿´keaskeï¿´lï¿´eï¿´tï¿´oï¿´ntï¿´aï¿´lkï¿´inï¿´gï¿´sï¿´ï¿´hï¿´ï¿´iï¿´ï¿´tï¿´ï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("thï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´abï¿´uï¿´iï¿´lï¿´tliï¿´keaskeï¿´lï¿´eï¿´tï¿´oï¿´ntï¿´aï¿´lkï¿´inï¿´gï¿´sï¿´ï¿´hï¿´ï¿´iï¿´ï¿´tï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "damn pï¿´ï¿´eï¿´ï¿´pï¿´ï¿´pï¿´ï¿´acï¿´hï¿´iï¿´lï¿´lout!!ï¿´ï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("dï¿´ï¿´aï¿´ï¿´mï¿´ï¿´npï¿´ï¿´eï¿´ï¿´pï¿´ï¿´pï¿´ï¿´acï¿´hï¿´iï¿´lï¿´loï¿´ï¿´uï¿´ï¿´ï¿´ï¿´t!!ï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+
+Tabs.Sentences:AddButton({
+                                             Title = "oï¿´kï¿´aï¿´ygï¿´oï¿´ï¿´rï¿´ï¿´loï¿´cï¿´ksï¿´tï¿´ï¿´oï¿´ï¿´pfï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gtï¿´alï¿´ï¿´kiï¿´ï¿´nï¿´ï¿´gï¿´ï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ï¿´ï¿´ï¿´oï¿´kï¿´aï¿´ygï¿´oï¿´ï¿´rï¿´ï¿´loï¿´cï¿´ksï¿´tï¿´ï¿´oï¿´ï¿´pfï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gtï¿´alï¿´ï¿´kiï¿´ï¿´nï¿´ï¿´g")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "sï¿´hï¿´uï¿´tyï¿´ï¿´ourfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gmï¿´ouï¿´tï¿´hfï¿´ï¿´aï¿´ï¿´tï¿´ï¿´bï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ï¿´ï¿´ï¿´sï¿´hï¿´uï¿´tyï¿´ï¿´ourfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gmï¿´ouï¿´tï¿´hfï¿´ï¿´aï¿´ï¿´tï¿´ï¿´bï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´h")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "cï¿´ï¿´hï¿´ï¿´iï¿´ï¿´lï¿´ï¿´loï¿´ï¿´uï¿´ï¿´tfï¿´ï¿´aï¿´ï¿´tfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kngï¿´ï¿´oeï¿´ï¿´aï¿´ï¿´tsï¿´oï¿´mï¿´eï¿´thiï¿´nï¿´gï¿´!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ï¿´ï¿´ï¿´cï¿´ï¿´hï¿´ï¿´iï¿´ï¿´lï¿´ï¿´loï¿´ï¿´uï¿´ï¿´tfï¿´ï¿´aï¿´ï¿´tfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kngï¿´ï¿´oeï¿´ï¿´aï¿´ï¿´tsï¿´oï¿´mï¿´eï¿´thiï¿´nï¿´gï¿´!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Sentences:AddButton({
+                                             Title = "oï¿´hnï¿´o!ï¿´!ï¿´!afï¿´ï¿´aï¿´ï¿´tï¿´ï¿´aï¿´sï¿´ï¿´swï¿´ï¿´hï¿´oï¿´ï¿´rï¿´ï¿´eiï¿´ssï¿´pï¿´eï¿´aï¿´kï¿´iï¿´nï¿´gï¿´!!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ï¿´ï¿´ï¿´oï¿´hnï¿´o!ï¿´!ï¿´!afï¿´ï¿´aï¿´ï¿´tï¿´ï¿´aï¿´sï¿´ï¿´swï¿´ï¿´hï¿´oï¿´ï¿´rï¿´ï¿´eiï¿´ssï¿´pï¿´eï¿´aï¿´kï¿´iï¿´nï¿´gï¿´!!")
+                                                
+                                             end,
+                                          })
+
+
+
+Tabs.Sentences:AddButton({
+                                             Title = "aï¿´lï¿´rï¿´iï¿´gï¿´hï¿´tkï¿´eï¿´eï¿´psï¿´uï¿´cï¿´kï¿´iï¿´nï¿´gmï¿´ybï¿´aï¿´lï¿´lï¿´sfï¿´aï¿´tï¿´tï¿´y",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ï¿´ï¿´ï¿´aï¿´lï¿´rï¿´iï¿´gï¿´hï¿´tkï¿´eï¿´eï¿´psï¿´uï¿´cï¿´kï¿´iï¿´nï¿´gmï¿´ybï¿´aï¿´lï¿´lï¿´sfï¿´aï¿´tï¿´tï¿´y")
+                                                
+                                             end,
+                                          })
+
+                            local Tabs = {
+    Women = Window:AddTab({ Title = "Women", Icon = "chef-hat" })
+                            }
+Tabs.Women:AddButton({
+                                Title = "back to the dishes fat bitch!",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("bï¿´ï¿´aï¿´ï¿´cï¿´ï¿´ktï¿´ï¿´otï¿´ï¿´hï¿´ï¿´edï¿´ï¿´iï¿´ï¿´sï¿´ï¿´hï¿´ï¿´eï¿´ï¿´sfï¿´ï¿´aï¿´ï¿´ï¿´tbï¿´ï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´ï¿´!")
+                                    
+                                    end,
+                                    })
+Tabs.Women:AddButton({
+                                Title = "''we fight for rights!'' how about i rape you?",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("''wï¿´ï¿´efï¿´iï¿´gï¿´ï¿´hï¿´tfï¿´oï¿´rrï¿´iï¿´gï¿´hï¿´tï¿´sï¿´!''hï¿´oï¿´waï¿´bï¿´oï¿´uï¿´tirï¿´ï¿´aï¿´ï¿´pï¿´ï¿´ï¿´eï¿´uï¿´?")
+                                    
+                                    end,
+                                    })
+                   
+
+Tabs.Women:AddButton({
+                                Title = "times ticking bitch! get back to dishes!",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("tï¿´iï¿´mï¿´eï¿´stï¿´iï¿´cï¿´kï¿´iï¿´nï¿´gï¿´bï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´ï¿´!gï¿´eï¿´tbï¿´aï¿´cï¿´ktï¿´odï¿´iï¿´sï¿´hï¿´eï¿´sï¿´!")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "youre a slave, but for the kitchen",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("yï¿´ï¿´oï¿´ï¿´urï¿´ï¿´eaï¿´ï¿´sï¿´ï¿´lï¿´ï¿´aï¿´ï¿´vï¿´ï¿´e,bï¿´ï¿´uï¿´ï¿´tfï¿´ï¿´oï¿´ï¿´rtï¿´ï¿´hï¿´ï¿´ekï¿´ï¿´itcï¿´ï¿´hï¿´ï¿´eï¿´ï¿´n")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "atp just change ur gender whore",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("aï¿´ï¿´tï¿´ï¿´pjï¿´ï¿´uï¿´ï¿´sï¿´ï¿´tcï¿´ï¿´hï¿´ï¿´aï¿´ï¿´nï¿´ï¿´gï¿´ï¿´euï¿´ï¿´rgï¿´ï¿´eï¿´ï¿´nï¿´ï¿´dï¿´ï¿´eï¿´ï¿´rwï¿´ï¿´hï¿´oï¿´ï¿´rï¿´ï¿´e")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "go 1 day without being a bitch, impossible!",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("gï¿´ï¿´o1ï¿´dï¿´ï¿´aï¿´ï¿´ywï¿´ï¿´iï¿´ï¿´tï¿´ï¿´hï¿´ï¿´oï¿´uï¿´ï¿´tbï¿´ï¿´eï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gabï¿´ï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´ï¿´, iï¿´mï¿´ï¿´pï¿´ï¿´oï¿´sï¿´ï¿´siï¿´ï¿´bï¿´ï¿´lï¿´ï¿´eï¿´ï¿´!")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "woah! i didnt know dishwashers can talk!",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("wï¿´oï¿´ï¿´aï¿´ï¿´hï¿´!idï¿´ï¿´iï¿´dï¿´nï¿´tkï¿´noï¿´wdï¿´iï¿´sï¿´hï¿´wï¿´aï¿´sï¿´hï¿´erï¿´scï¿´aï¿´ntï¿´aï¿´lï¿´k!")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "only real ones love raping women",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("onlï¿´ï¿´yrï¿´eï¿´aï¿´loneslï¿´ï¿´oï¿´ï¿´ï¿´vï¿´ï¿´erï¿´ï¿´aï¿´ï¿´pï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gwoï¿´mï¿´eï¿´n")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "clean my fucking house bitch!",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("cï¿´leï¿´ï¿´aï¿´nmï¿´ï¿´ï¿´yfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´ghï¿´oï¿´uï¿´sï¿´ebï¿´ï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´ï¿´!")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "shut the fuck up woman lol",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("sï¿´hï¿´uï¿´tï¿´tï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´ï¿´pwï¿´ï¿´oï¿´mï¿´ï¿´aï¿´nlï¿´ï¿´oï¿´ï¿´l")
+                                    
+                                    end,
+                                    })
+
+Tabs.Women:AddButton({
+                                Title = "no bitch, get back to cleaning",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("nï¿´ï¿´obï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´,gï¿´ï¿´eï¿´ï¿´tbï¿´ï¿´aï¿´ï¿´cï¿´ï¿´ktï¿´ï¿´ï¿´oclï¿´eï¿´anï¿´ï¿´iï¿´ï¿´nï¿´g")
+                                    
+                                    end,
+                                    })
+
+
+                           local Tabs = {
+    Fun = Window:AddTab({ Title = "Fun", Icon = "laugh" })
+                            }
+
+
+                            Tabs.Fun:AddButton({
+                                Title = "how many times a day do you jerk off?",
+                                Description = "Very important button",
+                                Callback = function()
+                                   Chat("howmanytimesadaydoyoujÐµï¿´ï¿´ï¿´rkoff?")
+                                    
+                                    end,
+                                    })
+
+                                    Tabs.Fun:AddButton({
+                                        Title = "skibidi toilet has a huge cock!",
+                                        Description = "Very important button",
+                                        Callback = function()
+                                           Chat("Ñ•kibidiï¿´toiletÒ»asaï¿´Ò»ugeÑï¿´ï¿´ï¿´Ð¾Ñï¿´ï¿´ï¿´k!")
+                                            
+                                            end,
+                                            })
+
+
+                                   Tabs.Fun:AddButton({
+                                        Title = "epic skibidi toilet battle at xvideos.com!",
+                                        Description = "Very important button",
+                                        Callback = function()
+                                           Chat("epicskibidiï¿´toiletbattleatÑ…ï¿´ï¿´vï¿´ï¿´Ñ–ï¿´ï¿´dï¿´Ðµï¿´Ð¾ï¿´Ñ•ï¿´.ï¿´Ñï¿´ï¿´Ð¾ï¿´m!")
+                                            
+                                            end,
+                                            })
+
+                                            
+                                   Tabs.Fun:AddButton({
+                                    Title = "can dreamybull swallow 5 dicks at once???",
+                                    Description = "Very important button",
+                                    Callback = function()
+                                       Chat("candreamybullï¿´swallow5dï¿´ï¿´ï¿´Ñ–Ñï¿´ï¿´ï¿´ksatonce???")
+                                        
+                                        end,
+                                        })
+
+                                        Tabs.Fun:AddButton({
+                                          Title = "grimace shake raping little children!",
+                                          Description = "Very important button",
+                                          Callback = function()
+                                             Chat("grimaceshakerï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´Ñ€Ñ–nï¿´ï¿´ï¿´glittleÑÒ»ï¿´ï¿´ï¿´Ñ–Óï¿´ï¿´ï¿´drÐµï¿´ï¿´ï¿´n!")
+                                              
+                                              end,
+                                              })
+
+                                              Tabs.Fun:AddButton({
+                                                Title = "drdisrecpect raping minors at xhamster.com",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("drdisrespectrï¿´ï¿´ï¿´Ð°Ñ€ï¿´ï¿´ï¿´ingmï¿´ï¿´ï¿´Ñ–nï¿´ï¿´ï¿´Ð¾rsatÑ…Ò»ï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´r.Ñï¿´ï¿´ï¿´Ð¾ï¿´ï¿´ï¿´m")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "10,000$ from mrbeast at watchpeopledie.tv",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("10,000$frommrbeastatï¿´wï¿´ï¿´ï¿´Ð°tï¿´ï¿´ï¿´Ñï¿´ï¿´ï¿´Ò»Ñ€ï¿´ï¿´ï¿´ÐµÐ¾ï¿´ï¿´ï¿´Ñ€Óï¿´ï¿´ï¿´Ðµdï¿´ï¿´ï¿´Ñ–Ðµ.tï¿´ï¿´ï¿´v!")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "brazzers is free!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("bï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´zï¿´zï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´siï¿´ï¿´ï¿´sfï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´e!")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "brb ima jerk off to milf mommys!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("brbimajï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´koï¿´ï¿´ï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´ftï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´mï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´Ófï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´omï¿´ï¿´ï¿´ï¿´mys!ï¿´ï¿´ï¿´")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "ur avatar is so fucking hot!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("uï¿´ï¿´ï¿´ï¿´ravï¿´ï¿´ï¿´ï¿´atï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´riï¿´ï¿´ï¿´ï¿´ssï¿´ï¿´ï¿´ï¿´ï¿´ofï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´gÒ»ï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´t!ï¿´ï¿´ï¿´")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "epic rï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´inï¿´ï¿´ï¿´g session ï¿´ï¿´ï¿´ï¿´at jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´m!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("epicrï¿´ï¿´aï¿´ï¿´pï¿´ï¿´inï¿´ï¿´gsessionï¿´ï¿´atjï¿´ï¿´eï¿´ï¿´rï¿´ï¿´kï¿´ï¿´ï¿´oï¿´ï¿´fï¿´ï¿´fï¿´ï¿´wï¿´ï¿´iï¿´ï¿´tï¿´ï¿´hï¿´ï¿´mï¿´ï¿´eï¿´ï¿´.ï¿´ï¿´cï¿´ï¿´oï¿´ï¿´m!")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´sï¿´ï¿´nï¿´ï¿´iï¿´ï¿´pï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´olf showing her bï¿´ï¿´ï¿´iï¿´ï¿´ï¿´g tï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´tï¿´ï¿´ï¿´iï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´sï¿´ï¿´nï¿´ï¿´iï¿´ï¿´pï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´olfshowingherbï¿´ï¿´ï¿´iï¿´ï¿´ï¿´gtï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´tï¿´ï¿´ï¿´iï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´!ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "sï¿´hï¿´aï¿´dï¿´oï¿´wï¿´6ï¿´2aï¿´ï¿´cï¿´ciï¿´dï¿´eï¿´nï¿´tï¿´aï¿´lï¿´lï¿´ysï¿´uï¿´cï¿´kï¿´eï¿´dadï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("sï¿´hï¿´aï¿´dï¿´oï¿´wï¿´6ï¿´2aï¿´ï¿´cï¿´ciï¿´dï¿´eï¿´nï¿´tï¿´aï¿´lï¿´lï¿´ysï¿´uï¿´cï¿´kï¿´eï¿´dadï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "icï¿´aï¿´uï¿´gï¿´htsï¿´haï¿´dï¿´owï¿´6ï¿´2waï¿´tï¿´cï¿´hï¿´iï¿´ngcï¿´ï¿´hï¿´ï¿´iï¿´ï¿´lï¿´ï¿´dpï¿´ï¿´ï¿´oï¿´ï¿´rï¿´ï¿´ï¿´nï¿´ï¿´ï¿´!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("icï¿´aï¿´uï¿´gï¿´htsï¿´haï¿´dï¿´owï¿´6ï¿´2waï¿´tï¿´cï¿´hï¿´iï¿´ngcï¿´ï¿´hï¿´ï¿´iï¿´ï¿´lï¿´ï¿´dpï¿´ï¿´ï¿´oï¿´ï¿´rï¿´ï¿´ï¿´nï¿´ï¿´ï¿´!")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "drï¿´ï¿´eï¿´aï¿´mï¿´yï¿´ï¿´bï¿´uï¿´lï¿´lhï¿´aï¿´vï¿´iï¿´nï¿´g3dï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´siï¿´ï¿´nhï¿´iï¿´saï¿´ï¿´ï¿´sï¿´ï¿´s",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("drï¿´ï¿´eï¿´aï¿´mï¿´yï¿´ï¿´bï¿´uï¿´lï¿´lhï¿´aï¿´vï¿´iï¿´nï¿´g3dï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´siï¿´ï¿´nhï¿´iï¿´saï¿´ï¿´ï¿´sï¿´ï¿´s")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "epicaï¿´dï¿´vï¿´ï¿´eï¿´nï¿´tï¿´uï¿´rï¿´ewï¿´iï¿´tï¿´hmï¿´ydï¿´iï¿´lï¿´dï¿´ocï¿´ï¿´oï¿´mï¿´pï¿´aï¿´nï¿´iï¿´oï¿´nï¿´!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("epicaï¿´dï¿´vï¿´ï¿´eï¿´nï¿´tï¿´uï¿´rï¿´ewï¿´iï¿´tï¿´hmï¿´ydï¿´iï¿´lï¿´dï¿´ocï¿´ï¿´oï¿´mï¿´pï¿´aï¿´nï¿´iï¿´oï¿´nï¿´!")
+                                                    
+                                                    end,
+                                                    })
+
+
+Tabs.Fun:AddButton({
+                                                Title = "willthisaï¿´fï¿´ï¿´feï¿´ï¿´cï¿´ï¿´tmï¿´ï¿´ysï¿´ï¿´eï¿´ï¿´xdï¿´ï¿´oï¿´ï¿´lï¿´ï¿´l?",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("willthisaï¿´fï¿´ï¿´feï¿´ï¿´cï¿´ï¿´tmï¿´ï¿´ysï¿´ï¿´eï¿´ï¿´xdï¿´ï¿´oï¿´ï¿´lï¿´ï¿´l?")
+                                                    
+                                                    end,
+                                                    })
+
+Tabs.Fun:AddButton({
+                                                Title = "Aï¿´Bï¿´Ctï¿´ohï¿´aï¿´vï¿´ehï¿´aï¿´rï¿´dï¿´cï¿´oï¿´rï¿´esï¿´ï¿´eï¿´ï¿´xï¿´ï¿´!!!",
+                                                Description = "Very important button",
+                                                Callback = function()
+                                                   Chat("Aï¿´Bï¿´Ctï¿´ohï¿´aï¿´vï¿´ehï¿´aï¿´rï¿´dï¿´cï¿´oï¿´rï¿´esï¿´ï¿´eï¿´ï¿´xï¿´ï¿´!!!")
+                                                    
+                                                    end,
+                                                    })
+
+
+
+local Tabs = {
+    Racist = Window:AddTab({ Title = "Racist", Icon = "banana" })
+                            }
+Tabs.Racist:AddButton({
+    Title = "thug nigga behavior!",
+    Description = "Very important button",
+    Callback = function()
+       Chat("tÒ»ugnÑ–gï¿´ï¿´ï¿´gabehavior!")
+        
+        end,
+        })
+
+        Tabs.Racist:AddButton({
+            Title = "get out you monkey!",
+            Description = "Very important button",
+            Callback = function()
+               Chat("getoutyoumÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ!")
+                
+                end,
+                })
+
+        Tabs.Racist:AddButton({
+            Title = "u want some chicken blackass?",
+            Description = "Very important button",
+            Callback = function()
+               Chat("uwantsomecï¿´ï¿´hï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´eï¿´ï¿´nbï¿´ï¿´lï¿´ï¿´aï¿´ï¿´cï¿´ï¿´kï¿´ï¿´ï¿´aï¿´ï¿´sï¿´ï¿´sï¿´ï¿´?")
+                
+                end,
+                })
+
+                Tabs.Racist:AddButton({
+                    Title = "sorry, i dont talk to slaves!",
+                    Description = "Very important button",
+                    Callback = function()
+                       Chat("sorry,idon'ttalktoÑ•ï¿´Óï¿´Ð°ï¿´vï¿´Ðµs!")
+                        
+                        end,
+                        })
+
+                        Tabs.Racist:AddButton({
+                            Title = "shut the fuck up slave!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("Ñ•ï¿´Ò»ï¿´uï¿´ttï¿´Ò»ï¿´Ðµfï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´Ñï¿´kuï¿´Ñ€Ñ•ï¿´Óï¿´Ð°ï¿´vï¿´Ðµ!")
+                                
+                                end,
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "LICK MY BALLS YOU FUCKING CHIMPANZEE",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("Lï¿´Ó€ï¿´Ð¡ï¿´ÐšÐœï¿´YÐ’ï¿´Ðï¿´Lï¿´Lï¿´Ð…YÐžUï¿´ï¿´Fï¿´ï¿´ï¿´ï¿´Uï¿´ï¿´ï¿´ï¿´Ð¡ï¿´ï¿´ï¿´ÐšÓ€ï¿´ï¿´NGï¿´ï¿´CHIMPANZEE")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "this is not kfc you dumbass monkey!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("tï¿´ï¿´hï¿´ï¿´iï¿´ï¿´siï¿´ï¿´snï¿´oï¿´ï¿´tkfï¿´ï¿´ï¿´cyoudï¿´ï¿´uï¿´ï¿´mï¿´ï¿´bï¿´ï¿´aï¿´ï¿´sï¿´ï¿´smï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´keï¿´ï¿´y!")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "go back to the kfc black bitch",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("gobacktï¿´ï¿´otï¿´ï¿´hï¿´ï¿´ekï¿´ï¿´fï¿´ï¿´cbï¿´ï¿´ï¿´lï¿´ï¿´aï¿´ï¿´cï¿´ï¿´kbï¿´ï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´h")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "imagine being a retarded monkey",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("imï¿´ï¿´agï¿´ï¿´inebeï¿´ï¿´iï¿´ï¿´nï¿´ï¿´garï¿´ï¿´eï¿´ï¿´tï¿´ï¿´arï¿´ï¿´dï¿´ï¿´eï¿´ï¿´dmï¿´ï¿´oï¿´ï¿´nï¿´ï¿´kï¿´ï¿´eï¿´ï¿´y")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "this nigga dancing like a blackass slave",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("tï¿´ï¿´hisnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´adï¿´aï¿´nï¿´cï¿´iï¿´nglï¿´ï¿´ikï¿´ï¿´eabï¿´ï¿´lï¿´aï¿´ï¿´cï¿´ï¿´kï¿´ï¿´aï¿´ï¿´sï¿´ï¿´ssï¿´ï¿´lï¿´ï¿´aï¿´ï¿´vï¿´ï¿´e")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "go swallow a cock slave!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("goÑ•wï¿´ï¿´ï¿´Ð°ÓÓï¿´ï¿´ï¿´Ð¾waÑï¿´ï¿´ï¿´Ð¾ï¿´ï¿´ï¿´ÑkÑ•ï¿´Óï¿´Ð°ï¿´vï¿´Ðµ!")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Racist:AddButton({
+                            Title = "at least i dont steal hellcats slave bitch!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("atlï¿´ï¿´eï¿´ï¿´astidï¿´ï¿´oï¿´ï¿´ntstealhï¿´ï¿´eï¿´ï¿´lï¿´ï¿´lï¿´ï¿´cï¿´ï¿´aï¿´ï¿´tï¿´ï¿´ssï¿´ï¿´lï¿´ï¿´aï¿´ï¿´vï¿´ï¿´ebï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´hï¿´ï¿´!")
+                                
+                                end,
+	
+                                }) 
+
+
+Tabs.Racist:AddButton({
+                            Title = "i dont give a shit monkey!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("idontgiveaÑ•ï¿´ï¿´ï¿´Ò»Ñ–ï¿´ï¿´ï¿´tmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ!")
+                                
+                                end,
+	
+                                }) 
+
+                Tabs.Racist:AddButton({
+                                           Title = "i support the kkk!",
+                                           Description = "Very important button",
+                                           Callback = function()
+                                              Chat("i support the kï¿´ï¿´ï¿´kï¿´ï¿´ï¿´k!")
+                               
+                                     end,
+                                     }) 
+
+                                     Tabs.Racist:AddButton({
+                                       Title = "idc fuck off monk!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("idcfï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´Ñï¿´kÐ¾ï¿´fï¿´fmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+                                                 Tabs.Racist:AddButton({
+                                                   Title = "shut up nigger monk!",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("Ñ•ï¿´ï¿´ï¿´Ò»uï¿´ï¿´ï¿´tuï¿´ï¿´ï¿´Ñ€nÑ–gï¿´ï¿´ï¿´gÐµrmÐ¾ï¿´ï¿´ï¿´nk!")
+                                                       
+                                                       end,
+
+                                                   
+                                                       }) 
+
+                                           Tabs.Racist:AddButton({
+                                             Title = "did this blackass monkey just talk back to me?",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("didthisbï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´mï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´kï¿´ï¿´ï¿´eï¿´ï¿´ï¿´yjusttalkbacktome?")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "listen to your master slave!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("lisï¿´ï¿´ï¿´ï¿´teï¿´ï¿´ï¿´ntï¿´ï¿´ï¿´ï¿´ï¿´ï¿´oyoï¿´ï¿´ï¿´ï¿´ï¿´urmï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´rsï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´e!")
+                                                
+                                             end,
+                                          })
+
+
+                                           Tabs.Racist:AddButton({
+                                             Title = "back to work monkey now!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("bï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´owï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kmï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ey,Nï¿´ï¿´ï¿´ï¿´OW!")
+                                                
+                                             end,
+                                          })
+
+                                           Tabs.Racist:AddButton({
+                                             Title = "woah! that is niggiculous!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´ï¿´ï¿´oï¿´ï¿´ï¿´aï¿´ï¿´ï¿´h!tï¿´ï¿´ï¿´ï¿´haï¿´ï¿´ï¿´tisnï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´s!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "*whips slave* you nigga back to the field!!!!!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("*ï¿´wï¿´ï¿´hï¿´ï¿´ï¿´iï¿´ï¿´pï¿´ï¿´sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´*ï¿´younï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´aï¿´ï¿´bï¿´ï¿´aï¿´ï¿´cï¿´ï¿´ktï¿´ï¿´otï¿´ï¿´hï¿´ï¿´efï¿´ï¿´iï¿´ï¿´eï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´!ï¿´!ï¿´!!!!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "woah! that is quite niggerful!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´ï¿´ï¿´oï¿´ï¿´ï¿´w!tï¿´ï¿´ï¿´ï¿´haï¿´ï¿´ï¿´tisqï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´enï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ful!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "omg! kï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´p qï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´t nï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´r bï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´e i wï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´p yï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´r ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("omg!ï¿´kï¿´eï¿´eï¿´pqï¿´uï¿´iï¿´eï¿´tnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rbï¿´ï¿´eï¿´ï¿´fï¿´ï¿´oï¿´ï¿´rï¿´ï¿´eiwï¿´ï¿´hï¿´ï¿´iï¿´ï¿´pyï¿´oï¿´uï¿´raï¿´ï¿´sï¿´ï¿´sï¿´ï¿´!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "oï¿´fï¿´ctï¿´hï¿´iï¿´snï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rwï¿´ï¿´aï¿´nï¿´tï¿´ssï¿´omï¿´ewï¿´aï¿´tï¿´eï¿´rï¿´mï¿´eï¿´lï¿´oï¿´ï¿´nï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("oï¿´fï¿´ctï¿´hï¿´iï¿´snï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rwï¿´ï¿´aï¿´nï¿´tï¿´ssï¿´omï¿´ewï¿´aï¿´tï¿´eï¿´rï¿´mï¿´eï¿´lï¿´oï¿´ï¿´nï¿´")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "idï¿´oï¿´nï¿´tsï¿´eï¿´lï¿´lnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´shï¿´ï¿´eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´!sï¿´ï¿´ï¿´tï¿´ï¿´oï¿´ï¿´paï¿´ï¿´sï¿´ï¿´kï¿´ï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gfï¿´oï¿´rtï¿´hï¿´eï¿´mï¿´!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("idï¿´oï¿´nï¿´tsï¿´eï¿´lï¿´lnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´shï¿´ï¿´eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´!sï¿´ï¿´ï¿´tï¿´ï¿´oï¿´ï¿´paï¿´ï¿´sï¿´ï¿´kï¿´ï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gfï¿´oï¿´rtï¿´hï¿´eï¿´mï¿´!")
+                                                
+                                             end,
+                                          })
+
+
+Tabs.Racist:AddButton({
+                                             Title = "wï¿´oï¿´wï¿´wwï¿´...iï¿´ï¿´stï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´oï¿´rsï¿´aï¿´lï¿´eï¿´?iï¿´lï¿´lgï¿´iï¿´vï¿´e9cï¿´eï¿´nï¿´tï¿´s!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´oï¿´wï¿´wwï¿´...iï¿´ï¿´stï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´oï¿´rsï¿´aï¿´lï¿´eï¿´?iï¿´lï¿´lgï¿´iï¿´vï¿´e9cï¿´eï¿´nï¿´tï¿´s!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "gï¿´eï¿´ttï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´koï¿´uï¿´tnï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ridï¿´ï¿´oï¿´ï¿´nï¿´ï¿´tgï¿´ï¿´iï¿´ï¿´vï¿´ï¿´easï¿´ï¿´hï¿´ï¿´iï¿´ï¿´t",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("gï¿´eï¿´ttï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´koï¿´uï¿´tnï¿´ï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ridï¿´ï¿´oï¿´ï¿´nï¿´ï¿´tgï¿´ï¿´iï¿´ï¿´vï¿´ï¿´easï¿´ï¿´hï¿´ï¿´iï¿´ï¿´t")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "wï¿´oï¿´wï¿´.anï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rnï¿´ï¿´eï¿´veï¿´ï¿´rtï¿´aï¿´lï¿´kï¿´eï¿´dtï¿´omï¿´elï¿´iï¿´kï¿´etï¿´ï¿´hï¿´ï¿´aï¿´ï¿´t",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´oï¿´wï¿´.anï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rnï¿´ï¿´eï¿´veï¿´ï¿´rtï¿´aï¿´lï¿´kï¿´eï¿´dtï¿´omï¿´elï¿´iï¿´kï¿´etï¿´ï¿´hï¿´ï¿´aï¿´ï¿´t")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "wï¿´aï¿´tï¿´cï¿´hyï¿´oï¿´uï¿´rwï¿´oï¿´rï¿´dï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´!oï¿´riï¿´mgï¿´oï¿´nï¿´nï¿´awï¿´hï¿´ipï¿´uï¿´!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´aï¿´tï¿´cï¿´hyï¿´oï¿´uï¿´rwï¿´oï¿´rï¿´dï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´!oï¿´riï¿´mgï¿´oï¿´nï¿´nï¿´awï¿´hï¿´ipï¿´uï¿´!")
+                                                
+                                             end,
+                                          })
+
+
+Tabs.Racist:AddButton({
+                                             Title = "woow! that is really niggerspectful!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("woow!tï¿´ï¿´ï¿´ï¿´haï¿´ï¿´ï¿´tisrï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´alï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ynï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´spï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´tfï¿´ï¿´ï¿´ul!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "i dont give no fucks monkey",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("iï¿´dï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´ï¿´tgï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´ofï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´yï¿´ï¿´ï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+
+Tabs.Racist:AddButton({
+                                             Title = "ok fuck off you absolute nigger slave",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("okfï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´koï¿´ï¿´ï¿´fï¿´ï¿´ï¿´fnowyoï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uaï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´olï¿´ï¿´ï¿´ï¿´utenï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rsï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´ï¿´e")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "oh my bad! i dont talk to nigger slaves oops!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ohmï¿´ï¿´ï¿´ï¿´ybï¿´ï¿´ï¿´ï¿´ï¿´ad!idoï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nttaï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´ktï¿´ï¿´ï¿´ï¿´onï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´soops!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "i dont speak in niggerish, sorry monk!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("idï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ntsï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´akiï¿´ï¿´ï¿´ï¿´ï¿´nnï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´h,sï¿´orrymï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´k!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "get the fuck out you blackass monk!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("gï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´fï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´koutyoubï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´smï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´nï¿´k!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "shut the fuck up nigger i dont give no fucks",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´hï¿´uï¿´ttï¿´ï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´pnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ridï¿´ï¿´oï¿´ï¿´nï¿´ï¿´tgï¿´ï¿´iï¿´ï¿´vï¿´ï¿´enï¿´ï¿´ofï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´s")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "is a blackass nigger talking to me?",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("iï¿´ï¿´sabï¿´ï¿´lï¿´ï¿´aï¿´ï¿´cï¿´ï¿´kï¿´ï¿´aï¿´ï¿´sï¿´ï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´ï¿´aï¿´ï¿´lï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gtï¿´ï¿´omï¿´ï¿´e?")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "omg!hï¿´ï¿´esï¿´ï¿´pï¿´ï¿´eï¿´ï¿´aï¿´ï¿´kï¿´ï¿´sfï¿´ï¿´ï¿´ï¿´lï¿´ï¿´uï¿´ï¿´eï¿´ï¿´nï¿´ï¿´tnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´iï¿´ï¿´ï¿´ï¿´cï¿´ï¿´aï¿´ï¿´nï¿´ï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("omg!!hï¿´ï¿´esï¿´ï¿´pï¿´ï¿´eï¿´ï¿´aï¿´ï¿´kï¿´ï¿´sfï¿´ï¿´ï¿´ï¿´lï¿´ï¿´uï¿´ï¿´eï¿´ï¿´nï¿´ï¿´tnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´iï¿´ï¿´ï¿´ï¿´cï¿´ï¿´aï¿´ï¿´nï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+Tabs.Racist:AddButton({
+                                             Title = "cï¿´ï¿´aï¿´ï¿´lï¿´ï¿´mdownmï¿´ï¿´elï¿´ï¿´onmï¿´ï¿´uï¿´ï¿´nï¿´ï¿´cï¿´ï¿´hï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gmï¿´ï¿´oï¿´ï¿´nï¿´ï¿´kï¿´ï¿´eï¿´ï¿´yfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´k!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("cï¿´ï¿´aï¿´ï¿´lï¿´ï¿´mdownmï¿´ï¿´elï¿´ï¿´onmï¿´ï¿´uï¿´ï¿´nï¿´ï¿´cï¿´ï¿´hï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gmï¿´ï¿´oï¿´ï¿´nï¿´ï¿´kï¿´ï¿´eï¿´ï¿´yfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´k!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "bï¿´ï¿´lï¿´ï¿´aï¿´ï¿´cï¿´ï¿´ï¿´kï¿´ï¿´saï¿´rï¿´euï¿´sï¿´elï¿´eï¿´ï¿´ssï¿´sï¿´pï¿´eciï¿´ï¿´mï¿´eï¿´nwï¿´hï¿´ooï¿´nï¿´lï¿´ysï¿´tï¿´eï¿´aï¿´l!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("bï¿´ï¿´lï¿´ï¿´aï¿´ï¿´cï¿´ï¿´ï¿´kï¿´ï¿´saï¿´rï¿´euï¿´sï¿´elï¿´eï¿´ï¿´ssï¿´sï¿´pï¿´eciï¿´ï¿´mï¿´eï¿´nwï¿´hï¿´ooï¿´nï¿´lï¿´ysï¿´tï¿´eï¿´aï¿´l!")
+                                                
+                                             end,
+                                          })
+
+Tabs.Racist:AddButton({
+                                             Title = "lï¿´eï¿´tï¿´'ï¿´sgï¿´eï¿´nï¿´oï¿´cï¿´ï¿´iï¿´dï¿´eaï¿´lï¿´lnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´stï¿´ï¿´hï¿´aï¿´tdï¿´oï¿´nï¿´twï¿´ï¿´oï¿´ï¿´rï¿´ï¿´knowfr",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("lï¿´eï¿´tï¿´'ï¿´sgï¿´eï¿´nï¿´oï¿´cï¿´ï¿´iï¿´dï¿´eaï¿´lï¿´lnï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´stï¿´ï¿´hï¿´aï¿´tdï¿´oï¿´nï¿´twï¿´ï¿´oï¿´ï¿´rï¿´ï¿´knowfr")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "sï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ttï¿´ï¿´hï¿´ï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´pmï¿´eï¿´lï¿´oï¿´nmï¿´uï¿´nï¿´cï¿´hï¿´eï¿´r",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ttï¿´ï¿´hï¿´ï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´pmï¿´eï¿´lï¿´oï¿´nmï¿´uï¿´nï¿´cï¿´hï¿´eï¿´r")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "wï¿´hï¿´yiï¿´stï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´alï¿´kingtoawï¿´aï¿´lï¿´l??",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´hï¿´yiï¿´stï¿´hï¿´iï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´alï¿´kingtoawï¿´aï¿´lï¿´l??")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "hï¿´aï¿´ï¿´ngabï¿´lï¿´aï¿´cï¿´kï¿´aï¿´sï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´oï¿´r3ï¿´0ï¿´0ï¿´0aï¿´uï¿´rï¿´a!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("hï¿´aï¿´ï¿´ngabï¿´lï¿´aï¿´cï¿´kï¿´aï¿´sï¿´snï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´oï¿´r3ï¿´0ï¿´0ï¿´0aï¿´uï¿´rï¿´a!")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "wï¿´hï¿´aï¿´tiï¿´ntï¿´hï¿´enï¿´ï¿´iï¿´ï¿´gï¿´ï¿´ï¿´gï¿´ï¿´ï¿´afï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kiï¿´stï¿´hï¿´aï¿´t??",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´hï¿´aï¿´tiï¿´ntï¿´hï¿´enï¿´ï¿´iï¿´ï¿´gï¿´ï¿´ï¿´gï¿´ï¿´ï¿´afï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kiï¿´stï¿´hï¿´aï¿´t??")
+                                                
+                                             end,
+                                          })
+
+                                          Tabs.Racist:AddButton({
+                                             Title = "#bï¿´lï¿´aï¿´cï¿´kï¿´lï¿´iï¿´vï¿´eï¿´sï¿´dï¿´oï¿´nï¿´tï¿´mï¿´aï¿´tï¿´tï¿´eï¿´rï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("#bï¿´lï¿´aï¿´cï¿´kï¿´lï¿´iï¿´vï¿´eï¿´sï¿´dï¿´oï¿´nï¿´tï¿´mï¿´aï¿´tï¿´tï¿´eï¿´rï¿´")
+                                                
+                                             end,
+                                          })
+                    
+
+Tabs.Racist:AddButton({
+                                             Title = "sï¿´hï¿´uï¿´tï¿´tï¿´hï¿´eï¿´fï¿´ï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ï¿´kï¿´ï¿´ï¿´uï¿´pï¿´aï¿´nï¿´dï¿´gï¿´oï¿´eï¿´aï¿´tï¿´cï¿´hï¿´iï¿´cï¿´kï¿´eï¿´nï¿´",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´hï¿´uï¿´tï¿´tï¿´hï¿´eï¿´fï¿´ï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ï¿´kï¿´ï¿´ï¿´uï¿´pï¿´aï¿´nï¿´dï¿´gï¿´oï¿´eï¿´aï¿´tï¿´cï¿´hï¿´iï¿´cï¿´kï¿´eï¿´nï¿´ï¿´")
+                                                
+                                             end,
+                                          })
+
+
+
+local Tabs = {
+    Homophobic = Window:AddTab({ Title = "Homophobic", Icon = "flag-off" })
+                            }
+
+Tabs.Homophobic:AddButton({
+                            Title = "this nigger has a cock up his ass!" ,
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("tï¿´Ò»ï¿´Ñ–ï¿´Ñ•nï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Ñ–gï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´Ðµï¿´ï¿´ï¿´ï¿´rÒ»ï¿´Ð°ï¿´Ñ•Ð°Ñï¿´ï¿´ï¿´ï¿´Ð¾ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Ñï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kuphisÐ°ï¿´ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Ñ•!")
+                                
+                                end,
+	
+                                }) 
+
+
+Tabs.Homophobic:AddButton({
+                            Title = "kill yourself queer monkey!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("kï¿´Ñ–ï¿´Óï¿´ÓÑƒï¿´Ð¾ï¿´uï¿´rï¿´Ñ•ï¿´Ðµï¿´Óï¿´fqï¿´uï¿´Ðµï¿´Ðµï¿´rmÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ!")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Homophobic:AddButton({
+                            Title = "whats up fag monkey?!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("whatsupfï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´mÐ¾ï¿´ï¿´ï¿´nkï¿´ï¿´ï¿´Ðµï¿´ï¿´ï¿´Ñƒ?!")
+                                
+                                end,
+	
+                                }) 
+
+Tabs.Homophobic:AddButton({
+                            Title = "shoot yourself queer ape!",
+                            Description = "Very important button",
+                            Callback = function()
+                               Chat("ï¿´Ñ•ï¿´Ò»ï¿´Ð¾ï¿´Ð¾ï¿´tyourselfqï¿´uï¿´Ðµï¿´Ðµï¿´rï¿´ape!")
+                                
+                                end,
+	
+                                }) 
+
+                                Tabs.Homophobic:AddButton({
+                                 Title = "im bout to rape you cunt fag",
+                                 Description = "Very important button",
+                                 Callback = function()
+                                    Chat("imbouttorï¿´ï¿´ï¿´Ð°Ñ€ï¿´ï¿´ï¿´Ðµyoucï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´g")
+                                     
+                                     end,
+        
+                                     }) 
+
+                                     Tabs.Homophobic:AddButton({
+                                       Title = "Ñ•Ò»ï¿´ï¿´ï¿´utÑƒï¿´ï¿´ï¿´Ð¾Ð°ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´Ñ•uï¿´ï¿´ï¿´Ñ€ faggot slave!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Ñ•Ò»ï¿´ï¿´ï¿´utÑƒï¿´ï¿´ï¿´Ð¾Ð°ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´Ñ•uï¿´ï¿´ï¿´Ñ€fï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´Ñ•ï¿´Óï¿´Ð°ï¿´vï¿´Ðµ!")
+                                           
+                                           end,
+              
+                                           }) 
+
+
+      
+                                     Tabs.Homophobic:AddButton({
+                                       Title = "gï¿´Ð¾kï¿´Ñƒï¿´Ñ•fag",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("plsgï¿´Ð¾kï¿´Ñƒï¿´Ñ•fï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "My apologies, i don't speak to fagsâ¤ï¸",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Myapologies,idoï¿´ï¿´nï¿´ï¿´ï¿´tsï¿´ï¿´ï¿´pï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ktofï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´â¤ï¸")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "drown all fags and rape their bodiesâ¤ï¸",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("dï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´saï¿´ï¿´ï¿´ï¿´ndrï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´etï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´eirï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´bodies!â¤ï¸")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "rape the lgbt!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´hï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "drown yourself trannie!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("drï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´wï¿´ï¿´nyouï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ï¿´seï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lftï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ï¿´anï¿´ï¿´ï¿´ï¿´nie!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "rape all fag people",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´ï¿´eï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´lfï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´gï¿´pï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´e")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "all fags need to get killed!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("aï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´snï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´dtï¿´ï¿´ï¿´ï¿´ogetkï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+
+Tabs.Homophobic:AddButton({
+                                       Title = "kill all fags in gas like jews!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´slikejï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "no one gives a fuck cuntboy!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("nï¿´ï¿´ï¿´ï¿´ooï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´egï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´safï¿´ï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kcï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´boy!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Homophobic:AddButton({
+                                       Title = "gï¿´ï¿´obacktofï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´guï¿´ï¿´rdï¿´ï¿´aï¿´ï¿´dlï¿´ï¿´gï¿´ï¿´bï¿´ï¿´tsï¿´ï¿´hï¿´ï¿´iï¿´ï¿´tï¿´ï¿´!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("gï¿´ï¿´obacktofï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´guï¿´ï¿´rdï¿´ï¿´aï¿´ï¿´dlï¿´ï¿´gï¿´ï¿´bï¿´ï¿´tsï¿´ï¿´hï¿´ï¿´iï¿´ï¿´tï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+                                           Tabs.Homophobic:AddButton({
+                                             Title = "ewfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kunï¿´ï¿´ï¿´ï¿´aï¿´ï¿´sï¿´ï¿´tycï¿´ï¿´uï¿´ï¿´nï¿´ï¿´t",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ewfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kunï¿´ï¿´ï¿´ï¿´aï¿´ï¿´sï¿´ï¿´tycï¿´ï¿´uï¿´ï¿´nï¿´ï¿´t")
+                                                 
+                                                 end,
+                    
+                                                 }) 
+
+                                                 Tabs.Homophobic:AddButton({
+                                                   Title = "sï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kadï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kyï¿´oï¿´ufï¿´ï¿´aï¿´ï¿´gï¿´ï¿´gï¿´ï¿´oï¿´ï¿´tsï¿´lï¿´aï¿´vï¿´e",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("sï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kadï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kyï¿´oï¿´ufï¿´ï¿´aï¿´ï¿´gï¿´ï¿´gï¿´ï¿´oï¿´ï¿´tsï¿´lï¿´aï¿´vï¿´e")
+                                                       
+                                                       end,
+                          
+                                                       }) 
+
+Tabs.Homophobic:AddButton({
+                                                   Title = "wï¿´hï¿´aï¿´ttï¿´ï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kaï¿´rï¿´euï¿´??aï¿´naï¿´lï¿´ieï¿´nï¿´??",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("wï¿´hï¿´aï¿´ttï¿´ï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kaï¿´rï¿´euï¿´??aï¿´naï¿´lï¿´ieï¿´nï¿´??")
+                                                       
+                                                       end,
+                          
+                                                       }) 
+
+Tabs.Homophobic:AddButton({
+                                                   Title = "oï¿´kï¿´fï¿´ï¿´aï¿´ï¿´gï¿´ï¿´gï¿´ï¿´oï¿´ï¿´tï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´lï¿´ï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´eï¿´ï¿´ï¿´yï¿´oï¿´uï¿´ï¿´dï¿´oï¿´nï¿´tï¿´hï¿´aï¿´vï¿´eï¿´rï¿´iï¿´gï¿´hï¿´tï¿´sï¿´tï¿´oï¿´sï¿´pï¿´eï¿´aï¿´kï¿´",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("oï¿´kï¿´fï¿´ï¿´aï¿´ï¿´gï¿´ï¿´gï¿´ï¿´oï¿´ï¿´tï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´lï¿´ï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´eï¿´ï¿´ï¿´yï¿´oï¿´uï¿´ï¿´dï¿´oï¿´nï¿´tï¿´hï¿´aï¿´vï¿´eï¿´rï¿´iï¿´gï¿´hï¿´tï¿´sï¿´tï¿´oï¿´sï¿´pï¿´eï¿´aï¿´kï¿´")
+                                                       
+                                                       end,
+                          
+                                                       })
+
+ 
+Tabs.Homophobic:AddButton({
+                                                   Title = "ok sï¿´ï¿´hï¿´uï¿´ttï¿´hï¿´efï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´ï¿´pfï¿´ï¿´aï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´yï¿´",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("oksï¿´ï¿´hï¿´uï¿´ttï¿´hï¿´efï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´ï¿´pfï¿´ï¿´aï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´yï¿´")
+                                                       
+                                                       end,
+                          
+                                                       })
+
+Tabs.Homophobic:AddButton({
+                                                   Title = "pï¿´lï¿´skï¿´ï¿´yï¿´ï¿´sfï¿´ï¿´aï¿´ï¿´guï¿´rpï¿´ronï¿´ouï¿´nsaï¿´rï¿´etï¿´hï¿´ey/tï¿´hï¿´eï¿´mlï¿´ï¿´olï¿´",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("pï¿´lï¿´skï¿´ï¿´yï¿´ï¿´sfï¿´ï¿´aï¿´ï¿´guï¿´rpï¿´ronï¿´ouï¿´nsaï¿´rï¿´etï¿´hï¿´ey/tï¿´hï¿´eï¿´mlï¿´ï¿´olï¿´")
+                                                       
+                                                       end,
+                          
+                                                       })
+
+
+                                     local Tabs = {
+    nazi = Window:AddTab({ Title = "nazi", Icon = "sword" }),
+}
+
+Tabs.nazi:AddButton({
+                                       Title = "common hitler W",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("commonhï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´W")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "go back to the gas chamber jew!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("gï¿´obï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´cktï¿´ï¿´ï¿´ï¿´othï¿´ï¿´ï¿´ï¿´egï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´w!")
+                                       end,
+                                    })
+
+
+Tabs.nazi:AddButton({
+                                       Title = "gas all fucking jews!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("gï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´saï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´lfï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´gjï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´s!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "let's gas some jews!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´letsgï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ejï¿´ï¿´ï¿´eï¿´ï¿´ï¿´wï¿´ï¿´ï¿´sï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "i just realized that hitler was soooo right!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ijuï¿´ï¿´ï¿´ï¿´streï¿´ï¿´ï¿´ï¿´aliï¿´ï¿´ï¿´zedthï¿´ï¿´ï¿´ï¿´athï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´wassï¿´ï¿´oï¿´ooï¿´orï¿´iï¿´gï¿´hï¿´tï¿´!")
+                                       end,
+                                    })
+
+
+Tabs.nazi:AddButton({
+                                       Title = "adolf hitler is the goat!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´fÒ»ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´riï¿´ï¿´ï¿´stï¿´ï¿´ï¿´ï¿´hï¿´ï¿´egï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´t!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "heil adolf hitler!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´Ò»ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´Óaï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´ï¿´fÒ»ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´r!")
+                                       end,
+                                    })
+
+
+Tabs.nazi:AddButton({
+                                       Title = "adolf hitler did!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("aï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´ï¿´fÒ»ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rdid!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "i fucking love hitler!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ifï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kiï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´glï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eÒ»ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´r!")
+                                       end,
+                                    })
+
+
+Tabs.nazi:AddButton({
+                                       Title = "i wish hitler had killed all jews",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´iwï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´hÒ»ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rhï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´dkï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´alï¿´ï¿´ï¿´ï¿´ï¿´ljï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "nazism on top!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´zï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´smontop!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "adolf hitler on top!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Óï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´Ò»ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rontop!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "hitler is goated for what he did",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´ï¿´Ò»ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´riï¿´ï¿´ï¿´ï¿´sgï¿´ï¿´ï¿´oï¿´ï¿´atï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´dfï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rwï¿´ï¿´ï¿´haï¿´ï¿´ï¿´thï¿´ï¿´ï¿´ï¿´ï¿´edï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´d")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "start a holocaust for fags!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("startahï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´lï¿´ï¿´ï¿´oï¿´ï¿´ï¿´cï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´tforfï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´s!")
+                                       end,
+                                    })
+
+
+Tabs.nazi:AddButton({
+                                       Title = "thenï¿´ï¿´aï¿´ï¿´zï¿´ï¿´irï¿´ï¿´eï¿´ï¿´gï¿´ï¿´iï¿´ï¿´mï¿´ï¿´ewasaconspiracytheory",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("thenï¿´ï¿´aï¿´ï¿´zï¿´ï¿´irï¿´ï¿´eï¿´ï¿´gï¿´ï¿´iï¿´ï¿´mï¿´ï¿´ewasaconspiracytheory")
+                                       end,
+                                    })
+
+
+
+
+Tabs.nazi:AddButton({
+                                       Title = "go shower in gas you jew!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("gï¿´ï¿´ï¿´ï¿´ï¿´osï¿´ï¿´ï¿´ï¿´ï¿´hoï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´riï¿´ï¿´ï¿´ï¿´ngï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´w!")
+                                       end,
+                                    })
+
+Tabs.nazi:AddButton({
+                                       Title = "you should get gassed jew!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("yï¿´ï¿´ï¿´oï¿´ï¿´usï¿´ï¿´ï¿´hï¿´ï¿´ï¿´oï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´dgï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´tgï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´sedjï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´w!")
+                                       end,
+                                    })
+
+
+
+
+                                     local Tabs = {
+    friendly = Window:AddTab({ Title = "friendly", Icon = "heart" }),
+}
+                                     Tabs.friendly:AddButton({
+                                       Title = "real shitâ¤ï¸",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("realÑ•ï¿´ï¿´ï¿´Ò»Ñ–ï¿´ï¿´ï¿´t")
+                                       end,
+                                    })
+
+Tabs.friendly:AddButton({
+                                       Title = "u speaking fax my homie",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("usï¿´ï¿´ï¿´pï¿´ï¿´ï¿´eï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´grealsï¿´ï¿´ï¿´ï¿´Ò»ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tmï¿´ï¿´ï¿´ï¿´ï¿´yhomieï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+Tabs.friendly:AddButton({
+                                       Title = "realest shit i heard today",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´ï¿´eaï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´estsï¿´ï¿´ï¿´ï¿´Ò»iï¿´ï¿´ï¿´ï¿´tihï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´dtï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´y")
+                                       end,
+                                    })
+
+Tabs.friendly:AddButton({
+                                       Title = "u beautiful as fuck gang",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("uï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´tiï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´laï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´sfï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´gaï¿´ï¿´ï¿´nï¿´ï¿´ï¿´g")
+                                       end,
+                                    })
+
+
+                                    local Tabs = {
+    Sexual = Window:AddTab({ Title = "Sexual", Icon = "sofa" }),
+}
+                                    Tabs.Sexual:AddButton({
+                                       Title = "oh yeah! that ass is MASSIVE!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ohyeah!thatÐ°ï¿´ï¿´ï¿´Ñ•ï¿´ï¿´ï¿´Ñ•isMASSIVE!")
+                                       end,
+                                    })    
+
+                                    Tabs.Sexual:AddButton({
+                                       Title = "wsg bbg u wanna see my HUGE dick?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wsgbbguwÐ°ï¿´ï¿´ï¿´nnï¿´ï¿´ï¿´Ð°Ñ•Ðµï¿´ï¿´ï¿´Ðµmï¿´ï¿´ï¿´ÑƒHUGEdï¿´ï¿´ï¿´Ñ–Ñï¿´ï¿´ï¿´k?")
+                                       end,
+                                    })
+
+                                    Tabs.Sexual:AddButton({
+                                       Title = "my cock is SOOOO MASSIVE!!!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("myÑï¿´ï¿´ï¿´ï¿´Ð¾ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Ñï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kisSOOOOHUGE!!!!")
+                                       end,
+                                    })
+
+
+                                    Tabs.Sexual:AddButton({
+                                       Title = "how do you carry that massive cock?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("Ò»owdoyoucarrythatmassiveÑï¿´ï¿´ï¿´ï¿´Ð¾ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´Ñï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´k?")
+                                       end,
+                                    })
+
+                                    Tabs.Sexual:AddButton({
+                                       Title = "that big black cock don't play",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("thatbÑ–ï¿´ï¿´ï¿´gbï¿´ï¿´ï¿´ÓÐ°Ñï¿´ï¿´ï¿´kÑï¿´ï¿´ï¿´Ð¾Ñï¿´ï¿´ï¿´kdon'tplay!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "suck my fucking cock stinky ass bitch",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kmï¿´ï¿´yfï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´gcï¿´ï¿´oï¿´ï¿´cï¿´ï¿´ksï¿´ï¿´tï¿´ï¿´iï¿´ï¿´nï¿´ï¿´kï¿´ï¿´yaï¿´ï¿´sï¿´ï¿´sbï¿´ï¿´iï¿´ï¿´tï¿´ï¿´cï¿´ï¿´h")
+                                           
+                                           end,
+              
+                                           })
+
+                                           Tabs.Sexual:AddButton({
+                                             Title = "i always think about raping children",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ialwaysthinkabrï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´Ñ€Ñ–nï¿´ï¿´ï¿´gÑÒ»ï¿´ï¿´ï¿´Ñ–Óï¿´ï¿´ï¿´drÐµï¿´ï¿´ï¿´n")
+                                             end,
+                                          })   
+
+                                          Tabs.Sexual:AddButton({
+                                             Title = "raping some minors rn",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("rï¿´ï¿´ï¿´Ð°ï¿´ï¿´ï¿´Ñ€Ñ–nï¿´ï¿´ï¿´gsomemï¿´ï¿´ï¿´Ñ–nï¿´ï¿´ï¿´Ð¾rsrn")
+                                             end,
+                                          })
+
+                                          Tabs.Sexual:AddButton({
+                                             Title = "rape all them minors!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("rï¿´ï¿´ï¿´Ð°Ñ€ï¿´ï¿´ï¿´Ðµaï¿´Óï¿´ÓthemmÑ–nÐ¾rÑ•!")
+                                             end,
+                                          })
+
+Tabs.Sexual:AddButton({
+                                       Title = "woah! that bitch naked!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´h!tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´tbï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´nï¿´ï¿´ï¿´aï¿´ï¿´ï¿´kï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+                                          Tabs.Sexual:AddButton({
+                                             Title = "lick that fat cock sex slave!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("lï¿´ï¿´ï¿´ï¿´iï¿´ï¿´cï¿´ktï¿´hï¿´ï¿´atfï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´tï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ksï¿´eï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´lï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´!")
+                                             end,
+                                          })
+
+                                          Tabs.Sexual:AddButton({
+                                             Title = "oh yeah! shake that ass!",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("ohyeah!sï¿´ï¿´ï¿´hï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´etï¿´ï¿´ï¿´hï¿´ï¿´aï¿´ï¿´ï¿´taï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´s!")
+                                             end,
+                                          })
+
+                                    Tabs.Sexual:AddButton({
+                                       Title = "can i milk them titties please?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("cï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nimï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ktï¿´ï¿´ï¿´hï¿´ï¿´ï¿´eï¿´ï¿´ï¿´mtï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´tï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´please?")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "biggest titties ive ever saw",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("biï¿´ï¿´ï¿´ï¿´ggï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´esï¿´ï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´tï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´veevï¿´ï¿´ï¿´ï¿´ersaw!")
+                                           
+                                           end,
+              
+                                           }) 
+
+ Tabs.Sexual:AddButton({
+                                       Title = "iwï¿´aï¿´nï¿´nï¿´asï¿´uï¿´fï¿´fï¿´oï¿´cï¿´aï¿´tï¿´eiï¿´ntï¿´hï¿´aï¿´taï¿´ï¿´sï¿´ï¿´s",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("iwï¿´aï¿´nï¿´nï¿´asï¿´uï¿´fï¿´fï¿´oï¿´cï¿´aï¿´tï¿´eiï¿´ntï¿´hï¿´aï¿´taï¿´ï¿´sï¿´ï¿´s")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "sï¿´lï¿´aï¿´pï¿´mï¿´yfï¿´ï¿´aï¿´cï¿´eï¿´wï¿´iï¿´tï¿´hyï¿´oï¿´uï¿´rdï¿´ï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´lï¿´aï¿´pï¿´mï¿´yfï¿´ï¿´aï¿´cï¿´eï¿´wï¿´iï¿´tï¿´hyï¿´oï¿´uï¿´rdï¿´ï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "hï¿´owmuchwillï¿´itcosttodï¿´rï¿´iï¿´lï¿´liï¿´nuï¿´raï¿´ï¿´sï¿´ï¿´sï¿´ï¿´hï¿´ï¿´oï¿´ï¿´lï¿´ï¿´euï¿´nï¿´tï¿´iï¿´liï¿´tbï¿´lï¿´eï¿´eï¿´dsï¿´?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("hï¿´owmuchwillï¿´itcosttodï¿´rï¿´iï¿´lï¿´liï¿´nuï¿´raï¿´ï¿´sï¿´ï¿´sï¿´ï¿´hï¿´ï¿´oï¿´ï¿´lï¿´ï¿´euï¿´nï¿´tï¿´iï¿´liï¿´tbï¿´lï¿´eï¿´eï¿´dsï¿´?")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tdï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kdï¿´aï¿´ï¿´dï¿´dyï¿´!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tdï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kdï¿´aï¿´ï¿´dï¿´dyï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "pulldï¿´oï¿´ï¿´wï¿´ï¿´nthempï¿´ï¿´aï¿´ï¿´nï¿´ï¿´tï¿´ï¿´iï¿´ï¿´eï¿´ï¿´srï¿´ï¿´q",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("pulldï¿´oï¿´ï¿´wï¿´ï¿´nthempï¿´ï¿´aï¿´ï¿´nï¿´ï¿´tï¿´ï¿´iï¿´ï¿´eï¿´ï¿´srï¿´ï¿´q")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "wï¿´Ò»ï¿´Ð°ï¿´tï¿´'ï¿´Ñ•Ñƒï¿´Ð¾ï¿´uï¿´rdï¿´Ñ–ï¿´Ñ•ï¿´Ñï¿´Ð¾ï¿´rï¿´dmommy?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wï¿´Ò»ï¿´Ð°ï¿´tï¿´'ï¿´Ñ•Ñƒï¿´Ð¾ï¿´uï¿´rdï¿´Ñ–ï¿´Ñ•ï¿´Ñï¿´Ð¾ï¿´rï¿´dmommy?")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tpï¿´ï¿´uï¿´ï¿´sï¿´ï¿´sï¿´ï¿´ymï¿´oï¿´ï¿´mï¿´mï¿´yï¿´!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tpï¿´ï¿´uï¿´ï¿´sï¿´ï¿´sï¿´ï¿´ymï¿´oï¿´ï¿´mï¿´mï¿´yï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "sï¿´lï¿´iï¿´dï¿´etï¿´hï¿´eï¿´mï¿´ï¿´uï¿´ï¿´tï¿´ï¿´hï¿´ï¿´aï¿´ï¿´fï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´nï¿´ï¿´ï¿´uï¿´mï¿´bï¿´eï¿´rmï¿´oï¿´mï¿´mï¿´y",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´lï¿´iï¿´dï¿´etï¿´hï¿´eï¿´mï¿´ï¿´uï¿´ï¿´tï¿´ï¿´hï¿´ï¿´aï¿´ï¿´fï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kï¿´ï¿´iï¿´ï¿´nï¿´ï¿´nï¿´ï¿´ï¿´uï¿´mï¿´bï¿´eï¿´rmï¿´oï¿´mï¿´mï¿´y")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tbï¿´ï¿´uï¿´ï¿´tï¿´ï¿´tï¿´ï¿´pï¿´ï¿´lï¿´ï¿´uï¿´ï¿´gmï¿´oï¿´ï¿´mï¿´mï¿´yï¿´!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("lï¿´ï¿´emmesï¿´eï¿´etï¿´hï¿´aï¿´tbï¿´ï¿´uï¿´ï¿´tï¿´ï¿´tï¿´ï¿´pï¿´ï¿´lï¿´ï¿´uï¿´ï¿´gmï¿´oï¿´ï¿´mï¿´mï¿´yï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "juststï¿´ï¿´aï¿´ï¿´rï¿´ï¿´ingatyoumï¿´ï¿´aï¿´ï¿´kesmï¿´ï¿´ydï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´hï¿´aï¿´ï¿´rï¿´ï¿´d!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("juststï¿´ï¿´aï¿´ï¿´rï¿´ï¿´ingatyoumï¿´ï¿´aï¿´ï¿´kesmï¿´ï¿´ydï¿´ï¿´iï¿´ï¿´cï¿´ï¿´kï¿´ï¿´hï¿´aï¿´ï¿´rï¿´ï¿´d!")
+                                           
+                                           end,
+              
+                                           }) 
+
+Tabs.Sexual:AddButton({
+                                       Title = "thataï¿´ï¿´sï¿´ï¿´sgï¿´ï¿´oï¿´ï¿´nï¿´ï¿´nï¿´ï¿´amï¿´ï¿´aï¿´ï¿´kï¿´ï¿´emï¿´ï¿´ecï¿´ï¿´ï¿´uï¿´ï¿´mï¿´ï¿´!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("thataï¿´ï¿´sï¿´ï¿´sgï¿´ï¿´oï¿´ï¿´nï¿´ï¿´nï¿´ï¿´amï¿´ï¿´aï¿´ï¿´kï¿´ï¿´emï¿´ï¿´ecï¿´ï¿´ï¿´uï¿´ï¿´mï¿´ï¿´!")
+                                           
+                                           end,
+              
+                                           }) 
+
+                                           Tabs.Sexual:AddButton({
+                                             Title = "wï¿´hï¿´oï¿´sdï¿´aï¿´dï¿´dï¿´yï¿´sï¿´lï¿´iï¿´tï¿´tï¿´lï¿´esï¿´ï¿´lï¿´ï¿´uï¿´ï¿´tï¿´ï¿´tï¿´ï¿´ybï¿´ï¿´iï¿´ï¿´tcï¿´ï¿´ï¿´ï¿´h?",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("wï¿´hï¿´oï¿´sdï¿´aï¿´dï¿´dï¿´yï¿´sï¿´lï¿´iï¿´tï¿´tï¿´lï¿´esï¿´ï¿´lï¿´ï¿´uï¿´ï¿´tï¿´ï¿´tï¿´ï¿´ybï¿´ï¿´iï¿´ï¿´tcï¿´ï¿´ï¿´ï¿´h?")
+                                                 
+                                                 end,
+                    
+                                                 }) 
+
+                                                 Tabs.Sexual:AddButton({
+                                                   Title = "iï¿´lï¿´lbï¿´eï¿´aï¿´tuï¿´raï¿´ï¿´sï¿´ï¿´snrï¿´aï¿´ï¿´pï¿´eu",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("iï¿´lï¿´lbï¿´eï¿´aï¿´tuï¿´raï¿´ï¿´sï¿´ï¿´snrï¿´aï¿´ï¿´pï¿´eu")
+                                                       
+                                                       end,
+                          
+                                                       }) 
+
+                                                       Tabs.Sexual:AddButton({
+                                                         Title = "lï¿´asï¿´tnï¿´iï¿´ghï¿´twï¿´aï¿´sï¿´crï¿´azï¿´ybï¿´rï¿´oihï¿´adï¿´sï¿´ï¿´eï¿´ï¿´xwasï¿´trï¿´aï¿´ydoï¿´g",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("lï¿´asï¿´tnï¿´iï¿´ghï¿´twï¿´aï¿´sï¿´crï¿´azï¿´ybï¿´rï¿´oihï¿´adï¿´sï¿´ï¿´eï¿´ï¿´xwasï¿´trï¿´aï¿´ydoï¿´g")
+                                                             
+                                                             end,
+                                
+                                                             }) 
+
+                                           Tabs.Sexual:AddButton({
+                                             Title = "sï¿´hï¿´esï¿´uï¿´cï¿´kï¿´iï¿´ndï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k",
+                                             Description = "Very important button",
+                                             Callback = function()
+                                                Chat("sï¿´hï¿´esï¿´uï¿´cï¿´kï¿´iï¿´ndï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k")
+                                                 
+                                                 end,
+                    
+                                                 }) 
+
+                                                 Tabs.Sexual:AddButton({
+                                                   Title = "sï¿´pï¿´rï¿´eï¿´aï¿´dtï¿´hï¿´oï¿´sï¿´ejï¿´uï¿´iï¿´cï¿´ypï¿´ï¿´uï¿´ï¿´sï¿´ï¿´sï¿´ï¿´ylï¿´ï¿´iï¿´ï¿´pï¿´ï¿´s",
+                                                   Description = "Very important button",
+                                                   Callback = function()
+                                                      Chat("sï¿´pï¿´rï¿´eï¿´aï¿´dtï¿´hï¿´oï¿´sï¿´ejï¿´uï¿´iï¿´cï¿´ypï¿´ï¿´uï¿´ï¿´sï¿´ï¿´sï¿´ï¿´ylï¿´ï¿´iï¿´ï¿´pï¿´ï¿´s")
+                                                       
+                                                       end,
+                          
+                                                       }) 
+
+                                                       Tabs.Sexual:AddButton({
+                                                         Title = "illgï¿´ï¿´iï¿´ï¿´vï¿´ï¿´eu1ï¿´ï¿´$tosï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kmï¿´ï¿´yfrï¿´ï¿´ienï¿´ï¿´dsdï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k",
+                                                         Description = "Very important button",
+                                                         Callback = function()
+                                                            Chat("illgï¿´ï¿´iï¿´ï¿´vï¿´ï¿´eu1ï¿´ï¿´$tosï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kmï¿´ï¿´yfrï¿´ï¿´ienï¿´ï¿´dsdï¿´ï¿´iï¿´ï¿´cï¿´ï¿´k")
+                                                             
+                                                             end,
+                                
+                                                             }) 
+
+
+
+
+
+local Tabs = {
+    Websites = Window:AddTab({ Title = "Websites", Icon = "rss" }),
+}
+Tabs.Websites:AddButton({
+                                       Title = "jerkmate.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´kï¿´ï¿´ï¿´mï¿´ï¿´ï¿´aï¿´ï¿´ï¿´tï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "stripchat.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "theporndude.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´ï¿´ï¿´hï¿´ï¿´ï¿´eï¿´ï¿´ï¿´pï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´uï¿´ï¿´ï¿´dï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´uï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´3ï¿´ï¿´ï¿´4ï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´ï¿´uï¿´ï¿´ï¿´lï¿´ï¿´ï¿´eï¿´ï¿´ï¿´3ï¿´ï¿´ï¿´4ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "bï¿´ï¿´ï¿´aï¿´ï¿´ï¿´dï¿´ï¿´ï¿´dï¿´ï¿´ï¿´iï¿´ï¿´ï¿´eï¿´ï¿´ï¿´hï¿´ï¿´ï¿´uï¿´ï¿´ï¿´bï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("bï¿´ï¿´ï¿´aï¿´ï¿´ï¿´dï¿´ï¿´ï¿´dï¿´ï¿´ï¿´iï¿´ï¿´ï¿´eï¿´ï¿´ï¿´hï¿´ï¿´ï¿´uï¿´ï¿´ï¿´bï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "xï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("dï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´yï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´xï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "rï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+Tabs.Websites:AddButton({
+                                       Title = "xï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´dï¿´ï¿´ï¿´eï¿´ï¿´ï¿´oï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("xï¿´ï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´dï¿´ï¿´ï¿´eï¿´ï¿´ï¿´oï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "aï¿´ï¿´ï¿´sï¿´ï¿´ï¿´iï¿´ï¿´ï¿´aï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´iï¿´ï¿´ï¿´lï¿´ï¿´ï¿´fï¿´ï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ï¿´bï¿´ï¿´ï¿´.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("aï¿´ï¿´ï¿´sï¿´ï¿´ï¿´iï¿´ï¿´ï¿´aï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´iï¿´ï¿´ï¿´lï¿´ï¿´ï¿´fï¿´ï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Websites:AddButton({
+                                       Title = "jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´m",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+Tabs.Websites:AddButton({
+                                       Title = "watchpeopledie.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´chï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´eoï¿´ï¿´ï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+Tabs.Websites:AddButton({
+                                       Title = "seegore.com",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´.ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+
+local Tabs = {
+    Roleplay = Window:AddTab({ Title = "Roleplay", Icon = "target" }),
+}
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*jerks off hard cock with lotion*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´*jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´hardcï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´kwithlï¿´ï¿´ï¿´oï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´*ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*shoots much cum*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´*sï¿´ï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´ï¿´tsmuchcï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´mï¿´ï¿´ï¿´ï¿´ï¿´ï¿´*ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*gets a boner*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("*getsabï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´*")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+ Title = "*pï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´s ï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´oï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´ oï¿´ï¿´ï¿´n cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´k*ï¿´ï¿´ï¿´ï¿´",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´*pï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´oï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´k*ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*puts cock in*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´*pï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´oï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´*ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*jerks off cock*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("*jï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´fï¿´ï¿´ï¿´fï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´*")
+                                       end,
+                                    })
+
+Tabs.Roleplay:AddButton({
+                                       Title = "*whips slave*",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´ï¿´ï¿´*wï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´pï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´sï¿´ï¿´ï¿´lï¿´ï¿´ï¿´aï¿´ï¿´ï¿´vï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´*ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+local Tabs = {
+    Socials = Window:AddTab({ Title = "Socials", Icon = "star" }),
+}
+
+Tabs.Socials:AddButton({
+                                       Title = "twitter",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´tï¿´ï¿´ï¿´wï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´tï¿´ï¿´ï¿´eï¿´ï¿´ï¿´rï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+
+Tabs.Socials:AddButton({
+                                       Title = "insta",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ï¿´iï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´sï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+Tabs.Socials:AddButton({
+                                       Title = "youtube",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("yï¿´ï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+
+                                    Tabs.Socials:AddButton({
+                                       Title = "onlyfans",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("oï¿´ï¿´nï¿´ï¿´lï¿´ï¿´yï¿´ï¿´fï¿´ï¿´aï¿´ï¿´nï¿´ï¿´ï¿´sï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+                                    Tabs.Socials:AddParagraph({
+                                        Title = "Information",
+                                        Content = "More bypasses next update!"
+                                    })
+local Tabs = {
+    Furry = Window:AddTab({ Title = "Furry", Icon = "angry" })
+                            }
+Tabs.Furry:AddButton({
+                                       Title = "get ready for castration you animal bitch!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("gï¿´ï¿´ï¿´eï¿´ï¿´ï¿´trï¿´ï¿´ï¿´eï¿´ï¿´ï¿´aï¿´ï¿´ï¿´dï¿´ï¿´ï¿´yforcï¿´ï¿´ï¿´aï¿´ï¿´ï¿´sï¿´ï¿´ï¿´tï¿´ï¿´ï¿´rï¿´ï¿´ï¿´aï¿´ï¿´ï¿´tionyï¿´ï¿´ï¿´oï¿´ï¿´ï¿´uï¿´ï¿´ï¿´animalï¿´ï¿´bï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+ Tabs.Furry:AddButton({
+                                       Title = "why is an animal bitch talking to me?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´yiï¿´ï¿´ï¿´saï¿´ï¿´ï¿´naï¿´ï¿´ï¿´nï¿´ï¿´ï¿´iï¿´ï¿´ï¿´mï¿´ï¿´ï¿´aï¿´ï¿´ï¿´lbï¿´ï¿´ï¿´iï¿´ï¿´ï¿´tï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´aï¿´ï¿´ï¿´lï¿´ï¿´ï¿´kiï¿´ï¿´ï¿´ï¿´ï¿´ï¿´nï¿´ï¿´ï¿´gï¿´ï¿´tï¿´ï¿´ï¿´omï¿´ï¿´ï¿´eï¿´ï¿´?")
+                                       end,
+                                    })
+
+ Tabs.Furry:AddButton({
+                                       Title = "look in the mirror b4 talking animal bitch",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("lï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´oï¿´ï¿´ï¿´kiï¿´ï¿´ï¿´ntï¿´ï¿´ï¿´hï¿´ï¿´ï¿´emï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´rï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´rï¿´ï¿´ï¿´bï¿´ï¿´ï¿´4tï¿´ï¿´ï¿´aï¿´ï¿´ï¿´lï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´ngï¿´ï¿´ï¿´animalbï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´tï¿´ï¿´ï¿´cï¿´ï¿´ï¿´hï¿´ï¿´ï¿´")
+                                       end,
+                                    })
+
+
+ Tabs.Furry:AddButton({
+                                       Title = "kys you animal looking fuck!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("kï¿´ï¿´ï¿´ï¿´ï¿´yï¿´ï¿´ï¿´ï¿´ï¿´ï¿´syoï¿´ï¿´ï¿´ï¿´ï¿´uaniï¿´ï¿´ï¿´ï¿´ï¿´ï¿´maï¿´ï¿´ï¿´ï¿´ï¿´llooï¿´ï¿´ï¿´ï¿´ï¿´ï¿´kinï¿´ï¿´ï¿´ï¿´gfï¿´ï¿´ï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´k!")
+                                       end,
+                                    })
+
+ Tabs.Furry:AddButton({
+                                       Title = "this nigga really think he an animal",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´ï¿´ï¿´ï¿´hï¿´ï¿´ï¿´iï¿´ï¿´ï¿´snï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´ï¿´gï¿´ï¿´ï¿´aï¿´ï¿´ï¿´reallyï¿´ï¿´ï¿´tï¿´ï¿´ï¿´hï¿´ï¿´ï¿´iï¿´ï¿´ï¿´nï¿´ï¿´ï¿´khï¿´ï¿´ï¿´eaï¿´ï¿´ï¿´naï¿´ï¿´ï¿´nï¿´ï¿´ï¿´imï¿´ï¿´ï¿´ï¿´ï¿´alï¿´")
+                                       end,
+                                    })
+ Tabs.Furry:AddButton({
+                                       Title = "if you were an animal youd be a monkey!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("ifyouwereananimalyoudbeamï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´kï¿´ï¿´ï¿´eï¿´ï¿´ï¿´yï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+ Tabs.Furry:AddButton({
+                                       Title = "i don't talk to retards who think they an animal",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("idï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´ï¿´ktï¿´ï¿´ï¿´orï¿´ï¿´ï¿´eï¿´ï¿´ï¿´tï¿´ï¿´ï¿´aï¿´ï¿´ï¿´rï¿´ï¿´ï¿´dï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´wï¿´ï¿´hothï¿´ï¿´ï¿´ï¿´inktheyanaï¿´ï¿´ï¿´niï¿´ï¿´ï¿´ï¿´mal")
+                                       end,
+                                    })
+
+ Tabs.Furry:AddButton({
+                                       Title = "hey ''animal''how ab i breed you w my cock?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("heï¿´ï¿´ï¿´y'anï¿´ï¿´ï¿´imï¿´ï¿´ï¿´al'hï¿´ï¿´ï¿´oï¿´ï¿´ï¿´waï¿´ï¿´ï¿´bï¿´ï¿´ï¿´ibï¿´ï¿´ï¿´rï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´dyouwmï¿´ï¿´ï¿´ï¿´ycï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´?")
+                                       end,
+                                    })
+
+Tabs.Furry:AddButton({
+                                       Title = "how deep did you put that tail up ur ass?",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("hï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´wdï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´pdï¿´ï¿´ï¿´iï¿´ï¿´ï¿´dyï¿´ï¿´oï¿´ï¿´ï¿´upï¿´ï¿´ï¿´uï¿´ï¿´ï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´hï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´aï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´luï¿´ï¿´ï¿´ï¿´puï¿´ï¿´ï¿´ï¿´raï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´?")
+                                       end,
+                                    })
+
+Tabs.Furry:AddButton({
+                                       Title = "that tail is deeep up your ass!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´ï¿´ï¿´hï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ttï¿´ï¿´ï¿´aï¿´ï¿´ï¿´iï¿´ï¿´ï¿´liï¿´ï¿´ï¿´sdï¿´ï¿´ï¿´eï¿´ï¿´ï¿´eï¿´ï¿´ï¿´eï¿´ï¿´ï¿´ï¿´ï¿´epuï¿´ï¿´ï¿´ï¿´pyï¿´ï¿´ï¿´ï¿´oï¿´ï¿´ï¿´uï¿´ï¿´ï¿´raï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´ï¿´ï¿´sï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+Tabs.Furry:AddButton({
+                                       Title = "wow! you must be a wild fucking animal!",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("wï¿´ï¿´ï¿´oï¿´ï¿´ï¿´wï¿´ï¿´ï¿´!yï¿´ï¿´ï¿´oï¿´ï¿´ï¿´umï¿´ï¿´ï¿´uï¿´ï¿´ï¿´sï¿´ï¿´ï¿´tbï¿´ï¿´ï¿´eawï¿´ï¿´ï¿´iï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´dfï¿´ï¿´ï¿´uï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´nï¿´ï¿´ï¿´gaï¿´ï¿´ï¿´nï¿´ï¿´ï¿´ï¿´ï¿´iï¿´ï¿´ï¿´mï¿´ï¿´ï¿´aï¿´ï¿´ï¿´ï¿´lï¿´ï¿´ï¿´!")
+                                       end,
+                                    })
+
+
+Tabs.Furry:AddButton({
+                                       Title = "use my dick as ur tail instead",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("uï¿´ï¿´ï¿´sï¿´ï¿´ï¿´emï¿´ï¿´ï¿´ycï¿´ï¿´ï¿´oï¿´ï¿´ï¿´ï¿´cï¿´ï¿´ï¿´ï¿´ï¿´kï¿´ï¿´ï¿´ï¿´ï¿´ï¿´aï¿´ï¿´ï¿´syï¿´ï¿´ï¿´oï¿´ï¿´ï¿´uï¿´ï¿´ï¿´rtï¿´ï¿´ï¿´aï¿´ï¿´ï¿´iï¿´ï¿´ï¿´liï¿´ï¿´ï¿´nï¿´ï¿´ï¿´sï¿´ï¿´ï¿´tï¿´ï¿´ï¿´ï¿´eï¿´ï¿´ï¿´aï¿´ï¿´d")
+                                       end,
+                                    })
+
+
+Tabs.Furry:AddButton({
+                                       Title = "sï¿´ï¿´hï¿´ï¿´oï¿´ï¿´oï¿´ï¿´ï¿´tafï¿´ï¿´ï¿´uï¿´ï¿´rï¿´ï¿´rï¿´ï¿´yduringhuntingseason",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´hï¿´ï¿´oï¿´ï¿´oï¿´ï¿´ï¿´tafï¿´ï¿´ï¿´uï¿´ï¿´rï¿´ï¿´rï¿´ï¿´yduringhuntingseason")
+                                       end,
+                                    })
+
+                                    Tabs.Furry:AddButton({
+                                       Title = "sï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ttï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´ï¿´pfï¿´uï¿´rï¿´rï¿´ylï¿´oï¿´sï¿´eï¿´r",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´hï¿´ï¿´uï¿´ï¿´ttï¿´hï¿´efï¿´ï¿´uï¿´ï¿´cï¿´ï¿´kuï¿´ï¿´pfï¿´uï¿´rï¿´rï¿´ylï¿´oï¿´sï¿´eï¿´r")
+                                       end,
+                                    })
+
+local Tabs = {
+    Insane = Window:AddTab({ Title = "Insane", Icon = "flame" })
+                            }
+Tabs.Insane:AddButton({
+                                       Title = "bï¿´ï¿´eï¿´aï¿´tuï¿´ï¿´ï¿´panï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´ï¿´odï¿´ï¿´eï¿´ï¿´aï¿´ï¿´tï¿´ï¿´haï¿´ï¿´nï¿´ï¿´deï¿´ï¿´athiï¿´ï¿´maï¿´ï¿´fï¿´ï¿´teï¿´ï¿´r",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("bï¿´ï¿´eï¿´aï¿´tuï¿´ï¿´ï¿´panï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´ï¿´odï¿´ï¿´eï¿´ï¿´aï¿´ï¿´tï¿´ï¿´haï¿´ï¿´nï¿´ï¿´deï¿´ï¿´athiï¿´ï¿´maï¿´ï¿´fï¿´ï¿´teï¿´ï¿´r")
+                                       end,
+                                    })
+
+Tabs.Insane:AddButton({
+                                       Title = "rï¿´ï¿´iï¿´ï¿´poï¿´ï¿´fï¿´ï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´riï¿´ï¿´nhï¿´ï¿´alï¿´ï¿´fandsï¿´ï¿´eï¿´ï¿´lï¿´ï¿´lhï¿´iï¿´soï¿´ï¿´rï¿´gï¿´ï¿´aï¿´ï¿´nï¿´ï¿´s",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("rï¿´ï¿´iï¿´ï¿´poï¿´ï¿´fï¿´ï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´riï¿´ï¿´nhï¿´ï¿´alï¿´ï¿´fandsï¿´ï¿´eï¿´ï¿´lï¿´ï¿´lhï¿´iï¿´soï¿´ï¿´rï¿´gï¿´ï¿´aï¿´ï¿´nï¿´ï¿´s")
+                                       end,
+                                    })
+
+Tabs.Insane:AddButton({
+                                       Title = "mï¿´ï¿´aï¿´ï¿´kï¿´ï¿´eanï¿´ï¿´iï¿´ï¿´gï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´ï¿´hï¿´ï¿´etï¿´ï¿´aï¿´ï¿´ï¿´rï¿´ï¿´gï¿´ï¿´eï¿´ï¿´taï¿´ï¿´tashootingrange",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("mï¿´ï¿´aï¿´ï¿´kï¿´ï¿´eanï¿´ï¿´iï¿´ï¿´gï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´ï¿´hï¿´ï¿´etï¿´ï¿´aï¿´ï¿´ï¿´rï¿´ï¿´gï¿´ï¿´eï¿´ï¿´taï¿´ï¿´tashootingrange")
+                                       end,
+                                    })
+
+Tabs.Insane:AddButton({
+                                       Title = "kï¿´ï¿´iï¿´ï¿´lï¿´lanï¿´ï¿´eï¿´wï¿´bï¿´oï¿´ï¿´rï¿´nkï¿´iï¿´daï¿´nï¿´drï¿´ï¿´aï¿´ï¿´pï¿´ï¿´ehï¿´iï¿´ï¿´sbï¿´ï¿´odï¿´ï¿´ï¿´yaï¿´ï¿´fï¿´ï¿´teï¿´ï¿´r",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("kï¿´ï¿´iï¿´ï¿´lï¿´lanï¿´ï¿´eï¿´wï¿´bï¿´oï¿´ï¿´rï¿´nkï¿´iï¿´daï¿´nï¿´drï¿´ï¿´aï¿´ï¿´pï¿´ï¿´ehï¿´iï¿´ï¿´sbï¿´ï¿´odï¿´ï¿´ï¿´yaï¿´ï¿´fï¿´ï¿´teï¿´ï¿´r")
+                                       end,
+                                    })
+
+Tabs.Insane:AddButton({
+                                       Title = "poison a nigger until he dies and rape him",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("pï¿´ï¿´oï¿´ï¿´iï¿´ï¿´sï¿´ï¿´oï¿´ï¿´nanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´ï¿´eï¿´ï¿´ruï¿´ï¿´nï¿´ï¿´tï¿´iï¿´lhï¿´ï¿´edï¿´ï¿´iï¿´ï¿´eï¿´ï¿´saï¿´ï¿´ndrï¿´ï¿´aï¿´ï¿´pï¿´ï¿´ehï¿´iï¿´m")
+                                       end,
+                                    })
+
+
+Tabs.Insane:AddButton({
+                                       Title = "sï¿´kï¿´iï¿´noï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´eï¿´raï¿´nï¿´dfï¿´eï¿´eï¿´dhï¿´iï¿´mhï¿´iï¿´ssï¿´kï¿´iï¿´n",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´kï¿´iï¿´noï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´eï¿´raï¿´nï¿´dfï¿´eï¿´eï¿´dhï¿´iï¿´mhï¿´iï¿´ssï¿´kï¿´iï¿´n")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "cï¿´uï¿´toï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ï¿´rï¿´slï¿´iï¿´mï¿´bï¿´swï¿´iï¿´tï¿´hakï¿´iï¿´tï¿´cï¿´hï¿´eï¿´nkï¿´nï¿´iï¿´ï¿´fï¿´ï¿´e",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("cï¿´uï¿´toï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´ï¿´rï¿´slï¿´iï¿´mï¿´bï¿´swï¿´iï¿´tï¿´hakï¿´iï¿´tï¿´cï¿´hï¿´eï¿´nkï¿´nï¿´iï¿´ï¿´fï¿´ï¿´e")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "tï¿´otï¿´aï¿´llï¿´ydï¿´iï¿´sï¿´meï¿´mï¿´bï¿´eï¿´ranï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´raï¿´nï¿´dsï¿´eï¿´lï¿´lï¿´hï¿´ï¿´iï¿´ï¿´m",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´otï¿´aï¿´llï¿´ydï¿´iï¿´sï¿´meï¿´mï¿´bï¿´eï¿´ranï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´raï¿´nï¿´dsï¿´eï¿´lï¿´lï¿´hï¿´ï¿´iï¿´ï¿´m")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "cï¿´uï¿´toï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´shï¿´eï¿´aï¿´daï¿´nï¿´dplayfootbalï¿´lwï¿´iï¿´tï¿´hiï¿´t",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("cï¿´uï¿´toï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´shï¿´eï¿´aï¿´daï¿´nï¿´dplayfootbalï¿´lwï¿´iï¿´tï¿´hiï¿´t")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "hï¿´aï¿´nï¿´ï¿´ganï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dtï¿´hï¿´rï¿´oï¿´wtï¿´oï¿´mï¿´aï¿´tï¿´oï¿´eï¿´saï¿´ï¿´thï¿´ï¿´iï¿´ï¿´m",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("hï¿´aï¿´nï¿´ï¿´ganï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dtï¿´hï¿´rï¿´oï¿´wtï¿´oï¿´mï¿´aï¿´tï¿´oï¿´eï¿´saï¿´ï¿´thï¿´ï¿´iï¿´ï¿´m")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "tï¿´hï¿´rï¿´oï¿´woï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´roï¿´macï¿´lï¿´iï¿´ffaï¿´nï¿´dlï¿´eï¿´thï¿´iï¿´mdï¿´iï¿´e",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´hï¿´rï¿´oï¿´woï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rfï¿´roï¿´macï¿´lï¿´iï¿´ffaï¿´nï¿´dlï¿´eï¿´thï¿´iï¿´mdï¿´iï¿´e")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "sï¿´lï¿´iï¿´cï¿´eoï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´sbï¿´oï¿´dï¿´yiï¿´nhï¿´aï¿´lï¿´fwakï¿´aï¿´tï¿´aï¿´nï¿´a",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("sï¿´lï¿´iï¿´cï¿´eoï¿´fï¿´fanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rï¿´ï¿´sbï¿´oï¿´dï¿´yiï¿´nhï¿´aï¿´lï¿´fwakï¿´aï¿´tï¿´aï¿´nï¿´a")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "tï¿´hrï¿´oï¿´wanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´oavoï¿´lcï¿´aï¿´nï¿´oaï¿´nï¿´dlï¿´eï¿´thï¿´iï¿´mbï¿´uï¿´rï¿´n",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("tï¿´hrï¿´oï¿´wanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´rtï¿´oavoï¿´lcï¿´aï¿´nï¿´oaï¿´nï¿´dlï¿´eï¿´thï¿´iï¿´mbï¿´uï¿´rï¿´n")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "kï¿´iï¿´dï¿´nï¿´aï¿´panï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dmï¿´aï¿´kï¿´ehï¿´iï¿´meï¿´aï¿´thï¿´iï¿´sfï¿´aï¿´mï¿´iï¿´lï¿´y",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("kï¿´iï¿´dï¿´nï¿´aï¿´panï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dmï¿´aï¿´kï¿´ehï¿´iï¿´meï¿´aï¿´thï¿´iï¿´sfï¿´aï¿´mï¿´iï¿´lï¿´y")
+                                       end,
+                                    })
+
+                                    Tabs.Insane:AddButton({
+                                       Title = "cï¿´rï¿´uï¿´cï¿´iï¿´fï¿´yanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dwatcï¿´hhimpï¿´aï¿´iï¿´nï¿´fï¿´uï¿´lï¿´ï¿´lï¿´ydï¿´iï¿´ï¿´e",
+                                       Description = "Very important button",
+                                       Callback = function()
+                                          Chat("cï¿´rï¿´uï¿´cï¿´iï¿´fï¿´yanï¿´ï¿´iï¿´ï¿´gï¿´ï¿´gï¿´ï¿´eï¿´ï¿´raï¿´nï¿´dwatcï¿´hhimpï¿´aï¿´iï¿´nï¿´fï¿´uï¿´lï¿´ï¿´lï¿´ydï¿´iï¿´ï¿´e")
+                                       end,
+                                    })
+
+local Tabs = {
+    Languages = Window:AddTab({ Title = "Languages", Icon = "languages" })
+                            }
+Tabs.Languages:AddButton({
+                                       Title = "ciï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´rï¿´ï¿´ï¿´rï¿´ï¿´ï¿´alï¿´ï¿´ï¿´apï¿´ï¿´ï¿´uï¿´ï¿´ï¿´tï¿´ï¿´abï¿´ï¿´ï¿´oï¿´ï¿´cï¿´ï¿´anï¿´ï¿´ï¿´ï¿´eï¿´ï¿´gï¿´ï¿´rï¿´ï¿´ï¿´o",
+                                       Description = "translation: shut the fuck up nigger",
+                                       Callback = function()
+                                          Chat("ciï¿´ï¿´ï¿´ï¿´ï¿´eï¿´ï¿´rï¿´ï¿´ï¿´rï¿´ï¿´ï¿´alï¿´ï¿´ï¿´apï¿´ï¿´ï¿´uï¿´ï¿´ï¿´tï¿´ï¿´abï¿´ï¿´ï¿´oï¿´ï¿´cï¿´ï¿´anï¿´ï¿´ï¿´ï¿´eï¿´ï¿´gï¿´ï¿´rï¿´ï¿´ï¿´o")
+                                       end,
+                                    })
+
+Tabs.Languages:AddButton({
+                                       Title = "eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´srï¿´ï¿´ï¿´eï¿´ï¿´tï¿´ï¿´rï¿´ï¿´aï¿´ï¿´sï¿´ï¿´aï¿´ï¿´dï¿´ï¿´omï¿´ï¿´eï¿´ï¿´nï¿´ï¿´tï¿´ï¿´aï¿´ï¿´l?",
+                                       Description = "translation: are u mentally retarded?",
+                                       Callback = function()
+                                          Chat("eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´srï¿´ï¿´ï¿´eï¿´ï¿´tï¿´ï¿´rï¿´ï¿´aï¿´ï¿´sï¿´ï¿´aï¿´ï¿´dï¿´ï¿´omï¿´ï¿´eï¿´ï¿´nï¿´ï¿´tï¿´ï¿´aï¿´ï¿´l?")
+                                       end,
+                                    }) 
+
+                                    Tabs.Languages:AddButton({
+                                       Title = "eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´suï¿´ï¿´nnï¿´ï¿´eï¿´ï¿´gï¿´ï¿´rï¿´ï¿´odï¿´ï¿´emï¿´ï¿´iï¿´ï¿´eï¿´ï¿´rï¿´ï¿´dï¿´ï¿´acï¿´ï¿´aï¿´ï¿´lï¿´ï¿´lï¿´ï¿´aï¿´ï¿´tï¿´ï¿´elï¿´ï¿´abï¿´ï¿´oï¿´ï¿´cï¿´ï¿´a",
+                                       Description = "translation: youre a black nigger stop talking",
+                                       Callback = function()
+                                          Chat("eï¿´ï¿´rï¿´ï¿´eï¿´ï¿´suï¿´ï¿´nnï¿´ï¿´eï¿´ï¿´gï¿´ï¿´rï¿´ï¿´odï¿´ï¿´emï¿´ï¿´iï¿´ï¿´eï¿´ï¿´rï¿´ï¿´dï¿´ï¿´acï¿´ï¿´aï¿´ï¿´lï¿´ï¿´lï¿´ï¿´aï¿´ï¿´tï¿´ï¿´elï¿´ï¿´abï¿´ï¿´oï¿´ï¿´cï¿´ï¿´a")
+                                       end,
+                                    }) 
+                                    
+                                    Tabs.Languages:AddButton({
+                                       Title = "ichliebeeskï¿´ï¿´lï¿´ï¿´eï¿´ï¿´iï¿´ï¿´nï¿´ï¿´ekï¿´ï¿´iï¿´ï¿´nï¿´dï¿´eï¿´raï¿´nï¿´zï¿´uï¿´fï¿´aï¿´sï¿´sï¿´eï¿´n",
+                                       Description = "translation: i like touching little children",
+                                       Callback = function()
+                                          Chat("ichliebeeskï¿´ï¿´lï¿´ï¿´eï¿´ï¿´iï¿´ï¿´nï¿´ï¿´ekï¿´ï¿´iï¿´ï¿´nï¿´dï¿´eï¿´raï¿´nï¿´zï¿´uï¿´fï¿´aï¿´sï¿´sï¿´eï¿´n")
+                                       end,
+                                    }) 
+                                    Tabs.Languages:AddButton({
+                                       Title = "sï¿´ï¿´pï¿´ï¿´iï¿´ï¿´eï¿´ï¿´rï¿´ï¿´dï¿´ï¿´aï¿´ï¿´lï¿´ï¿´aï¿´ï¿´jcï¿´ï¿´zï¿´ï¿´ï¿´ï¿´aï¿´ï¿´rï¿´ï¿´nï¿´ï¿´uï¿´ï¿´cï¿´ï¿´hï¿´u",
+                                       Description = "Translation: fuck off nigger",
+                                       Callback = function()
+                                          Chat("sï¿´ï¿´pï¿´ï¿´iï¿´ï¿´eï¿´ï¿´rï¿´ï¿´dï¿´ï¿´aï¿´ï¿´lï¿´ï¿´aï¿´ï¿´jcï¿´ï¿´zï¿´ï¿´ï¿´ï¿´aï¿´ï¿´rï¿´ï¿´nï¿´ï¿´uï¿´ï¿´cï¿´ï¿´hï¿´u")
+                                       end,
+                                    }) 
+                                    Tabs.Languages:AddButton({
+                                       Title = "uï¿´ï¿´tï¿´ï¿´kï¿´ï¿´aï¿´ï¿´jcï¿´ï¿´iï¿´ï¿´pï¿´ï¿´kï¿´ï¿´ecï¿´ï¿´zï¿´ï¿´aï¿´ï¿´rï¿´ï¿´nï¿´ï¿´akï¿´ï¿´uï¿´ï¿´rï¿´ï¿´wï¿´ï¿´o",
+                                       Description = "Translation: shut the fuck up black bitch",
+                                       Callback = function()
+                                          Chat("uï¿´ï¿´tï¿´ï¿´kï¿´ï¿´aï¿´ï¿´jcï¿´ï¿´iï¿´ï¿´pï¿´ï¿´kï¿´ï¿´ecï¿´ï¿´zï¿´ï¿´aï¿´ï¿´rï¿´ï¿´nï¿´ï¿´akï¿´ï¿´uï¿´ï¿´rï¿´ï¿´wï¿´ï¿´o")
+                                       end,
+                                    }) 
+                                    Tabs.Languages:AddButton({
+                                       Title = "gï¿´eï¿´hzï¿´ï¿´ï¿´uï¿´ï¿´rï¿´ï¿´Ã¼ï¿´ï¿´cï¿´ï¿´kaï¿´uï¿´fï¿´sfï¿´eï¿´lï¿´ï¿´dfï¿´ï¿´eï¿´ï¿´tï¿´ï¿´tï¿´ï¿´eï¿´ï¿´raï¿´fï¿´fï¿´e",
+                                       Description = "translation: get back to the field fat monkey",
+                                       Callback = function()
+                                          Chat("gï¿´eï¿´hzï¿´ï¿´ï¿´uï¿´ï¿´rï¿´ï¿´Ã¼ï¿´ï¿´cï¿´ï¿´kaï¿´uï¿´fï¿´sfï¿´eï¿´lï¿´ï¿´dfï¿´ï¿´eï¿´ï¿´tï¿´ï¿´tï¿´ï¿´eï¿´ï¿´raï¿´fï¿´fï¿´e")
+                                       end,
+                                    }) 
